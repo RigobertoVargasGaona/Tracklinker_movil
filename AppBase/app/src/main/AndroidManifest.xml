@@ -23,7 +23,7 @@
 		</activity>
 
 		<!-- Segunda actividad -->
-		<activity android:name=".ProductosActivity"
+		<activity android:name=".AddWarrantyActivity"
 				  android:exported="true">
 		</activity>
 	</application>

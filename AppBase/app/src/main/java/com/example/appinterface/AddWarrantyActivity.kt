@@ -11,13 +11,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProductosActivity : AppCompatActivity() {
+class AddWarrantyActivity : AppCompatActivity() {
 
     private var editingId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_productos)
+        setContentView(R.layout.activity_warranties)
 
         // Verificamos si viene de la MainActivity para editar
         if (intent.hasExtra("EDITING_ID")) {
@@ -67,16 +67,16 @@ class ProductosActivity : AppCompatActivity() {
         call.enqueue(object : Callback<DataResponseWarranty> {
             override fun onResponse(call: Call<DataResponseWarranty>, response: Response<DataResponseWarranty>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@ProductosActivity, "Operación exitosa", Toast.LENGTH_LONG).show()
-                    // NO usar setContentView. finish() cierra esta pantalla y vuelve a la anterior.
-                    finish()
+                    Toast.makeText(this@AddWarrantyActivity, "Operación exitosa", Toast.LENGTH_LONG).show()
+
+
                 } else {
-                    Toast.makeText(this@ProductosActivity, "Error en el servidor", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddWarrantyActivity, "Error en el servidor", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<DataResponseWarranty>, t: Throwable) {
-                Toast.makeText(this@ProductosActivity, "Fallo de conexión", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AddWarrantyActivity, "Fallo de conexión", Toast.LENGTH_SHORT).show()
             }
         })
     }

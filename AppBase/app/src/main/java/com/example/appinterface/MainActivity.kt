@@ -1,9 +1,6 @@
 package com.example.appinterface
-
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -32,16 +29,17 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
             insets
         }
 
-        val btnAgregar = findViewById<ImageButton>(R.id.buttonSegundaActividad)
+        val btnAgregar = findViewById<ImageButton>(R.id.buttonAgregarGarantia)
         btnAgregar.setOnClickListener {
-            val intent = Intent(this, ProductosActivity::class.java)
+            val intent = Intent(this, AddWarrantyActivity::class.java)
             startActivity(intent)
         }
+        mostrarGarantias()
     }
 
     override fun onEditClick(warranty: DataResponseWarranty) {
         // Enviar datos a la actividad de Productos para editar
-        val intent = Intent(this, ProductosActivity::class.java).apply {
+        val intent = Intent(this, AddWarrantyActivity::class.java).apply {
             putExtra("EDITING_ID", warranty.warranty_incidents_id)
             putExtra("SERIAL", warranty.product_serial)
             putExtra("CUSTOMER", warranty.warranty_customer)
@@ -57,7 +55,7 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
         eliminarGarantia(id)
     }
 
-    fun mostrarGarantias(v: View) {
+    fun mostrarGarantias() {
         val recyclerView = findViewById<RecyclerView>(R.id.RecyPersonas)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -78,7 +76,7 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@MainActivity, "Garantía eliminada", Toast.LENGTH_SHORT).show()
-                    mostrarGarantias(findViewById(android.R.id.content))
+                    mostrarGarantias()
                 }
             }
             override fun onFailure(call: Call<Void>, t: Throwable) {}

@@ -7,21 +7,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        tools:context=".ProductosActivity">
+        tools:context=".AddWarrantyActivity">
 
     <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="108dp"
             android:text="Registro de Garantía"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"/>
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutSerial"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -38,7 +37,7 @@
                 android:id="@+id/serial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapCharacters" />
+                android:inputType="textCapCharacters"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,7 +56,7 @@
                 android:id="@+id/customer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +74,7 @@
                 android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +93,7 @@
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone" />
+                android:inputType="phone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -112,7 +111,7 @@
                 android:id="@+id/adress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -132,14 +131,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="top"
                 android:inputType="textMultiLine"
-                android:lines="3" />
+                android:lines="3"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
             android:id="@+id/nuevapersona"
             android:layout_width="0dp"
             android:layout_height="55dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="140dp"
             android:onClick="crearGarantia"
             android:text="Guardar Garantía"
             android:textAllCaps="true"
@@ -147,19 +146,32 @@
             app:cornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/layoutDescription" app:iconTint="#B1A3A3"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintBottom_toBottomOf="parent"/>
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardVolver"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="300dp" android:layout_marginTop="8dp">
 
-    <TextView
-            android:id="@+id/buttonvolver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:onClick="volverpag"
-            android:text="← Volver al listado"
-            android:textColor="@color/design_default_color_primary"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <ImageButton
+                android:id="@+id/buttonVolver"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="Volver al listado"
+                android:padding="15dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon"
+                android:onClick="mostrarGarantias"
+                app:tint="@android:color/black"/>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
