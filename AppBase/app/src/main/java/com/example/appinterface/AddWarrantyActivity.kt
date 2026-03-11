@@ -19,7 +19,7 @@ class ProductosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_productos)
 
-        // Verificamos si vienes de la MainActivity para editar
+        // Verificamos si viene de la MainActivity para editar
         if (intent.hasExtra("EDITING_ID")) {
             editingId = intent.getIntExtra("EDITING_ID", -1)
 
