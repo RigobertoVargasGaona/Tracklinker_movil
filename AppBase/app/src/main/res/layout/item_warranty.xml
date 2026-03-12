@@ -64,6 +64,7 @@
                     android:contentDescription="Editar"
                     android:src="@drawable/iconseditar"
                     android:scaleType="centerInside" android:padding="4dp"
+                    app:tint="@android:color/black"/>
                     />
             <ImageButton
                     android:id="@+id/btnDelete"
@@ -74,6 +75,7 @@
                     android:src="@drawable/iconseliminar"
                     android:scaleType="centerInside"
                     android:padding="4dp"
+                    app:tint="@android:color/black"/>
             />
 
         </LinearLayout>
