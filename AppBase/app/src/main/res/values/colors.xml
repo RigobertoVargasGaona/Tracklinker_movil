@@ -2,4 +2,16 @@
 <resources>
 	<color name="black">#FF000000</color>
 	<color name="white">#FFFFFFFF</color>
+
+    <color name="status_green_text">#1B5E20</color>
+    <color name="status_green_bg">#E8F5E9</color>
+
+    <color name="status_orange_text">#E65100</color>
+    <color name="status_orange_bg">#FFF3E0</color>
+
+    <color name="status_red_text">#B71C1C</color>
+    <color name="status_red_bg">#FFEBEE</color>
+
+    <color name="status_gray_text">#455A64</color>
+    <color name="status_gray_bg">#ECEFF1</color>
 </resources>

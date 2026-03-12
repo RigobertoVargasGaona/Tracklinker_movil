@@ -1,10 +1,12 @@
 package com.example.appinterface.Adapter.adapterWarranties
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Api.Models.DataResponseWarranty
 import com.example.appinterface.R
@@ -46,6 +48,25 @@ class WarrantyAdapter(
                 listener.onDeleteClick(id)
             }
         }
+
+
+
+
+        val garantia = warranties[position]
+        val contexto = holder.itemView.context
+
+        holder.txtStatus.text = "Estado: ${garantia.warranty_status}"
+
+        // 1. Obtenemos ambos colores en una sola sentencia 'when'
+        val (colorTxt, colorBg) = when (garantia.warranty_status) {
+            "2"    -> R.color.status_green_text to R.color.status_green_bg
+            "0"    -> R.color.status_red_text to R.color.status_red_bg
+            else         -> R.color.status_orange_text to R.color.status_orange_bg
+        }
+
+        // 2. Aplicamos ambos colores
+        holder.txtStatus.setTextColor(ContextCompat.getColor(contexto, colorTxt))
+        holder.txtStatus.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(contexto, colorBg))
     }
 
     override fun getItemCount(): Int = warranties.size
@@ -58,5 +79,6 @@ class WarrantyAdapter(
         // Referencias a los botones nuevos del XML
         val btnEdit: ImageButton = itemView.findViewById(R.id.btnEdit)
         val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
+
     }
 }

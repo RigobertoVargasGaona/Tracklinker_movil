@@ -1,8 +1,10 @@
 package com.example.appinterface
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Api.Models.DataResponseWarranty
@@ -30,6 +32,11 @@ class AddWarrantyActivity : AppCompatActivity() {
             findViewById<EditText>(R.id.phone).setText(intent.getStringExtra("PHONE"))
             findViewById<EditText>(R.id.adress).setText(intent.getStringExtra("ADDRESS"))
             findViewById<EditText>(R.id.description).setText(intent.getStringExtra("DESCRIPTION"))
+        }
+        val btnHome = findViewById<ImageButton>(R.id.buttonVolver)
+        btnHome.setOnClickListener {
+        val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
