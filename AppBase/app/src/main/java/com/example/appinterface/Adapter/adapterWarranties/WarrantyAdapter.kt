@@ -15,6 +15,8 @@ import com.example.appinterface.R
 interface OnWarrantyClickListener {
     fun onEditClick(warranty: DataResponseWarranty)
     fun onDeleteClick(id: Int)
+
+    fun onItemClick(warranty: DataResponseWarranty)
 }
 
 // 2. Agregamos el listener al constructor del Adapter
@@ -48,9 +50,10 @@ class WarrantyAdapter(
                 listener.onDeleteClick(id)
             }
         }
-
-
-
+        // 5. Configurar el click para mostrar los datos en la modal
+        holder.itemView.setOnClickListener { item
+            listener.onItemClick(warranties[position])
+        }
 
         val garantia = warranties[position]
         val contexto = holder.itemView.context

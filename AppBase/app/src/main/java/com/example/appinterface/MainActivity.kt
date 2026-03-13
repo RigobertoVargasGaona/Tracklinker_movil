@@ -1,6 +1,7 @@
 package com.example.appinterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,8 @@ import com.example.appinterface.Adapter.adapterWarranties.WarrantyAdapter
 import com.example.appinterface.Adapter.adapterWarranties.OnWarrantyClickListener
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.Api.Models.DataResponseWarranty
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +36,46 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
         }
         mostrarGarantias()
 
+    }
+    override fun onItemClick(warranty: DataResponseWarranty) {
+        val dialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.layout_modal_warranty, null)
+
+        // 1. Vincular componentes del XML del modal
+        val txtSerial = view.findViewById<TextView>(R.id.txtSerial)
+        val txtCustomer = view.findViewById<TextView>(R.id.txtCustomer)
+        val txtPhone = view.findViewById<TextView>(R.id.txtPhone)
+        val txtAddress = view.findViewById<TextView>(R.id.txtaddress)
+        val txtCity = view.findViewById<TextView>(R.id.txtCity)
+        val txtDescription = view.findViewById<TextView>(R.id.txtDescription)
+        val txtStatus = view.findViewById<TextView>(R.id.txtStatus)
+
+
+        // 2. Asignar los valores del modelo
+        txtSerial.text = "Serial: ${warranty.product_serial}"
+        txtCustomer.text = "Cliente: ${warranty.warranty_customer}"
+        txtDescription.text = warranty.warranty_description
+        txtPhone.text = "Telefono:${warranty.warranty_phone}"
+        txtAddress.text= "Dirección:${warranty.warranty_address}"
+        txtCity.text = "Ciudad: ${warranty.warranty_city}"
+        txtStatus.text = "Estatus: ${warranty.warranty_status}"
+
+
+
+        // Lógica simple para el estado
+        txtStatus.text = if (warranty.warranty_status == "1") "Activo" else "Pendiente"
+
+        dialog.setContentView(view)
+
+        // 3. Control de altura (600px como ejemplo de altura específica)
+        val bottomSheet = dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+        bottomSheet?.let {
+            val behavior = BottomSheetBehavior.from(it)
+            behavior.peekHeight = 1200 // Ajusta este valor según prefieras
+            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+
+        dialog.show()
     }
 
     override fun onEditClick(warranty: DataResponseWarranty) {
