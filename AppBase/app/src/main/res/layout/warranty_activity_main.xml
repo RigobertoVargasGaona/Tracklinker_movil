@@ -7,15 +7,18 @@
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".WarrantiesActivity">
+        tools:context=".WarrantiesActivity"
+        android:fitsSystemWindows="true"
+>
 
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyPersonas"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/status_red_bg"
+            android:layout_marginTop="2dp"
+            android:padding="3dp"
+            android:background="@color/azul_fondo"
             tools:listitem="@android:layout/simple_list_item_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,17 +42,18 @@
 
     <ImageButton
             android:id="@+id/buttonVolver"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Volver"
             android:padding="12dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon"
+            app:tint="@color/black"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

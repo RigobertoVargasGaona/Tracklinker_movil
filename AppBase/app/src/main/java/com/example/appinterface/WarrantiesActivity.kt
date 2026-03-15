@@ -6,9 +6,6 @@ import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Adapter.adapterWarranties.WarrantyAdapter
@@ -21,13 +18,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
+class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.warranty_activity_main)
 
 
 
@@ -41,7 +38,7 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
     }
     override fun onItemClick(warranty: DataResponseWarranty) {
         val dialog = BottomSheetDialog(this)
-        val view = layoutInflater.inflate(R.layout.layout_modal_warranty, null)
+        val view = layoutInflater.inflate(R.layout.warranty_modal_details, null)
 
         // 1. Vincular componentes del XML del modal
         val txtSerial = view.findViewById<TextView>(R.id.txtSerial)
@@ -106,7 +103,7 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
             override fun onResponse(call: Call<List<DataResponseWarranty>>, response: Response<List<DataResponseWarranty>>) {
                 if (response.isSuccessful) {
                     response.body()?.let { data ->
-                        recyclerView.adapter = WarrantyAdapter(data, this@MainActivity)
+                        recyclerView.adapter = WarrantyAdapter(data, this@WarrantiesActivity)
                     }
                 }
             }
@@ -120,7 +117,7 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
         RetrofitInstance.api2kotlin.deleteWarranty(idParaEliminar).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@MainActivity, "Garantía eliminada", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@WarrantiesActivity, "Garantía eliminada", Toast.LENGTH_SHORT).show()
                     mostrarGarantias()
                 }
             }

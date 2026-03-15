@@ -7,21 +7,25 @@
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddWarrantyActivity">
+        tools:context=".AddWarrantyActivity"
+
+
+>
 
     <ImageButton
             android:id="@+id/buttonVolver"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Volver"
             android:padding="12dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon"
-            app:tint="@color/black" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:tint="@color/black"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"

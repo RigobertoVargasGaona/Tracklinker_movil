@@ -26,7 +26,7 @@ class WarrantyAdapter(
 ) : RecyclerView.Adapter<WarrantyAdapter.PersonaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonaViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_warranty, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.warranty_item_list, parent, false)
         return PersonaViewHolder(view)
     }
 

@@ -14,4 +14,9 @@
 
     <color name="status_gray_text">#455A64</color>
     <color name="status_gray_bg">#ECEFF1</color>
+
+    <color name="mi_color_personalizado">#2196F3</color>
+    <color name="negro_suave">#1A1C1E</color>
+    <color name="azul_fondo">#F0F4F8</color>
+
 </resources>

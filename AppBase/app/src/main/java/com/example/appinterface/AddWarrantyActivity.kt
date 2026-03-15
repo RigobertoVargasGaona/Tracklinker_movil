@@ -19,7 +19,7 @@ class AddWarrantyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_warranties)
+        setContentView(R.layout.warranty_save_edit)
 
         // Verificamos si viene de la MainActivity para editar
         if (intent.hasExtra("EDITING_ID")) {
@@ -35,7 +35,7 @@ class AddWarrantyActivity : AppCompatActivity() {
         }
         val btnHome = findViewById<ImageButton>(R.id.buttonVolver)
         btnHome.setOnClickListener {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, WarrantiesActivity::class.java)
             startActivity(intent)
         }
     }
