@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
@@ -55,8 +57,8 @@ class MainActivity : AppCompatActivity(), OnWarrantyClickListener {
         txtSerial.text = "Serial: ${warranty.product_serial}"
         txtCustomer.text = "Cliente: ${warranty.warranty_customer}"
         txtDescription.text = warranty.warranty_description
-        txtPhone.text = "Telefono:${warranty.warranty_phone}"
-        txtAddress.text= "Dirección:${warranty.warranty_address}"
+        txtPhone.text = "Telefono: ${warranty.warranty_phone}"
+        txtAddress.text= "Dirección: ${warranty.warranty_address}"
         txtCity.text = "Ciudad: ${warranty.warranty_city}"
         txtStatus.text = "Estatus: ${warranty.warranty_status}"
 
