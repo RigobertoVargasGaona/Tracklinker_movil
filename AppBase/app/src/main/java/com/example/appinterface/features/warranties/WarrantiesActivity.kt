@@ -1,4 +1,4 @@
-package com.example.appinterface
+package com.example.appinterface.features.warranties
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -12,6 +12,8 @@ import com.example.appinterface.Adapter.adapterWarranties.WarrantyAdapter
 import com.example.appinterface.Adapter.adapterWarranties.OnWarrantyClickListener
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.Api.Models.DataResponseWarranty
+import com.example.appinterface.MainActivity
+import com.example.appinterface.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
@@ -31,6 +33,12 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
         val btnAgregar = findViewById<ImageButton>(R.id.buttonAgregarGarantia)
         btnAgregar.setOnClickListener {
             val intent = Intent(this, AddWarrantyActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnVolver = findViewById<ImageButton>(R.id.buttonVolver)
+        btnVolver.setOnClickListener{
+            val intent =Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         mostrarGarantias()
