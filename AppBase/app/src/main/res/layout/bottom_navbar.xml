@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_bottom_nav"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <ImageButton
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            app:tint="#9ca3af"
+            android:background="@android:color/transparent"
+            android:scaleType="center"/>
+
+    <ImageButton
+            android:id="@+id/nav_users"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_users"
+            app:tint="#111827"
+            android:background="@android:color/transparent"
+            android:scaleType="center"/>
+
+    <ImageButton
+            android:id="@+id/nav_products"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_products"
+            app:tint="#9ca3af"
+            android:background="@android:color/transparent"
+            android:scaleType="center"/>
+
+</LinearLayout>
