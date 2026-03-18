@@ -10,7 +10,7 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 
-interface ApiServicesWarranties {
+interface WarrantiesApiService {
     @GET("/warranties")
     fun getWarranties(): Call<List<DataResponseWarranty>>
 
