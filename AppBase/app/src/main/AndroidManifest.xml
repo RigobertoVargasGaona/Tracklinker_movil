@@ -35,8 +35,9 @@
         <activity
                 android:name=".features.warranties.AddWarrantyActivity"
                 android:exported="false" />
-
-
+        <activity
+                android:name=".features.users.UsersActivity"
+                android:exported="false" />
 
     </application>
 
