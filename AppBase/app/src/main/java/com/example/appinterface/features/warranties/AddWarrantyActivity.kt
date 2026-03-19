@@ -41,6 +41,7 @@ class AddWarrantyActivity : AppCompatActivity() {
         }
     }
 
+
     fun createWarranty(v: View) {
         val serialStr = findViewById<EditText>(R.id.serial).text.toString()
         val customerStr = findViewById<EditText>(R.id.customer).text.toString()
@@ -76,7 +77,12 @@ class AddWarrantyActivity : AppCompatActivity() {
             override fun onResponse(call: Call<DataResponseWarranty>, response: Response<DataResponseWarranty>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@AddWarrantyActivity, "Operación exitosa", Toast.LENGTH_LONG).show()
-
+                    if (editingId != null) {
+                        val intent = Intent(this@AddWarrantyActivity, WarrantiesActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    clearInputs()
 
                 } else {
                     Toast.makeText(this@AddWarrantyActivity, "Error en el servidor", Toast.LENGTH_SHORT).show()
@@ -87,5 +93,15 @@ class AddWarrantyActivity : AppCompatActivity() {
                 Toast.makeText(this@AddWarrantyActivity, "Fallo de conexión", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+    private fun clearInputs() {
+        findViewById<EditText>(R.id.serial).setText("")
+        findViewById<EditText>(R.id.customer).setText("")
+        findViewById<EditText>(R.id.city).setText("")
+        findViewById<EditText>(R.id.phone).setText("")
+        findViewById<EditText>(R.id.adress).setText("")
+        findViewById<EditText>(R.id.description).setText("")
+
+        findViewById<EditText>(R.id.serial).requestFocus()
     }
 }
