@@ -1,46 +1,143 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<LinearLayout
+<com.google.android.flexbox.FlexboxLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="16dp"
+        android:layout_height="70dp"
+        android:layout_margin="5dp"
         android:background="@drawable/bg_bottom_nav"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:alignItems="center">
 
-    <ImageButton
-            android:id="@+id/nav_home"
-            android:layout_width="0dp"
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_home"
-            app:tint="#9ca3af"
-            android:background="@android:color/transparent"
-            android:scaleType="center"/>
+            app:justifyContent="center"
+            app:alignItems="center"
+            app:flexDirection="column"
+    >
+        <ImageButton
+                android:id="@+id/nav_home"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_home"
+                app:tint="#9ca3af"
+                android:background="@android:color/transparent"
+                android:scaleType="center"/>
+        <TextView
+                android:id="@+id/nav_home_label"
+                android:text="Inicio"
+                android:textSize="11sp"
+                android:fontFamily="@font/dmsansmedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#9ca3af"
+        />
+    </com.google.android.flexbox.FlexboxLayout>
 
-    <ImageButton
-            android:id="@+id/nav_users"
-            android:layout_width="0dp"
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_users"
-            app:tint="#111827"
-            android:background="@android:color/transparent"
-            android:scaleType="center"/>
+            app:justifyContent="center"
+            app:alignItems="center"
+            app:flexDirection="column"
+    >
+        <ImageButton
+                android:id="@+id/nav_users"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_users"
+                app:tint="#9ca3af"
+                android:background="@android:color/transparent"
+                android:scaleType="center"/>
+        <TextView
+                android:id="@+id/nav_users_label"
+                android:text="Usuarios"
+                android:fontFamily="@font/dmsansmedium"
+                android:textSize="11sp"
+                android:textColor="#9ca3af"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </com.google.android.flexbox.FlexboxLayout>
 
-    <ImageButton
-            android:id="@+id/nav_products"
-            android:layout_width="0dp"
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_products"
-            app:tint="#9ca3af"
-            android:background="@android:color/transparent"
-            android:scaleType="center"/>
+            app:justifyContent="center"
+            app:alignItems="center"
+            app:flexDirection="column"
+    >
+        <ImageButton
+                android:id="@+id/nav_categories"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_categories"
+                app:tint="#9ca3af"
+                android:background="@android:color/transparent"
+                android:scaleType="center"/>
+        <TextView
+                android:id="@+id/nav_categories_label"
+                android:text="Categorias"
+                android:fontFamily="@font/dmsansmedium"
+                android:textSize="11sp"
+                android:textColor="#9ca3af"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </com.google.android.flexbox.FlexboxLayout>
 
-</LinearLayout>
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            app:justifyContent="center"
+            app:alignItems="center"
+            app:flexDirection="column"
+    >
+        <ImageButton
+                android:id="@+id/nav_products"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_products"
+                app:tint="#9ca3af"
+                android:background="@android:color/transparent"
+                android:scaleType="center"/>
+        <TextView
+                android:id="@+id/nav_products_label"
+                android:text="Productos"
+                android:fontFamily="@font/dmsansmedium"
+                android:textSize="11sp"
+                android:textColor="#9ca3af"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </com.google.android.flexbox.FlexboxLayout>
+
+
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            app:justifyContent="center"
+            app:alignItems="center"
+            app:flexDirection="column"
+    >
+        <ImageButton
+                android:id="@+id/nav_warranties"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_warranties"
+                app:tint="#9ca3af"
+                android:background="@android:color/transparent"
+                android:scaleType="center"/>
+        <TextView
+                android:id="@+id/nav_warranties_label"
+                android:text="Garantias"
+                android:fontFamily="@font/dmsansmedium"
+                android:textSize="11sp"
+                android:textColor="#9ca3af"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </com.google.android.flexbox.FlexboxLayout>
+
+</com.google.android.flexbox.FlexboxLayout>
