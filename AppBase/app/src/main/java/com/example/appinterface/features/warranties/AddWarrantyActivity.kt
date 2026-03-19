@@ -41,7 +41,7 @@ class AddWarrantyActivity : AppCompatActivity() {
         }
     }
 
-    fun crearGarantia(v: View) {
+    fun createWarranty(v: View) {
         val serialStr = findViewById<EditText>(R.id.serial).text.toString()
         val customerStr = findViewById<EditText>(R.id.customer).text.toString()
         val phoneStr = findViewById<EditText>(R.id.phone).text.toString()
