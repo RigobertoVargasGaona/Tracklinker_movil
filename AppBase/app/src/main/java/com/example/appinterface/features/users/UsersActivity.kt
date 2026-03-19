@@ -20,6 +20,7 @@ import com.example.appinterface.Api.Models.User
 import com.example.appinterface.Api.Models.UsersResponse
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
+import com.example.appinterface.helpers.BottomNavHelper
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,6 +37,8 @@ class UsersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.users_activity)
+
+        BottomNavHelper.setup(this, R.id.nav_users)
 
         recycler = findViewById(R.id.users_recycler_view)
         recycler.layoutManager = LinearLayoutManager(this)
