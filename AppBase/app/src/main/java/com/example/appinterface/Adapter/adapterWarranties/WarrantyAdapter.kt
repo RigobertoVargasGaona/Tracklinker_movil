@@ -11,65 +11,72 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Api.Models.DataResponseWarranty
 import com.example.appinterface.R
 
-// 1. Definimos la interfaz aquí mismo o en un archivo aparte
+// Definimos la interfaz aquí mismo o en un archivo aparte
 interface OnWarrantyClickListener {
     fun onEditClick(warranty: DataResponseWarranty)
     fun onDeleteClick(id: Int)
-
     fun onItemClick(warranty: DataResponseWarranty)
 }
 
-// 2. Agregamos el listener al constructor del Adapter
+//  Agregamos el listener al constructor del Adapter
 class WarrantyAdapter(
     private val warranties: List<DataResponseWarranty>,
-    private val listener: OnWarrantyClickListener
-) : RecyclerView.Adapter<WarrantyAdapter.PersonaViewHolder>() {
+    private val listener: OnWarrantyClickListener) : RecyclerView.Adapter<WarrantyAdapter.PersonaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.warranty_item_list, parent, false)
+
         return PersonaViewHolder(view)
+
+    }
+
+    private fun idToStatus(id: String?): String {
+        return when (id) {
+            "0" -> "Recibida"
+            "1" -> "Pendiente"
+            "2" -> "Finalizada"
+            else -> "Desconocido"
+        }
     }
 
     override fun onBindViewHolder(holder: PersonaViewHolder, position: Int) {
         val item = warranties[position]
+        val contexto = holder.itemView.context
 
-        // Llenado de datos
+        //  Llenado de datos básicos
         holder.txtCustomer.text = "Cliente: ${item.warranty_customer}"
         holder.txtSerial.text = "Serial: ${item.product_serial}"
-        holder.txtStatus.text = "Estado: ${item.warranty_status}"
 
-        // 3. Configurar el clic para EDITAR
+
+        // Guardamos el texto convertido en una variable para usarlo abajo
+        val statusName = idToStatus(item.warranty_status)
+        holder.txtStatus.text = "Estado: $statusName"
+
+
+        // Usamos el ID original (item.warranty_status) para decidir los colores
+        val (colorTxt, colorBg) = when (item.warranty_status) {
+            "2" -> R.color.status_green_text to R.color.status_green_bg
+            "0" -> R.color.status_red_text to R.color.status_red_bg
+            else -> R.color.status_orange_text to R.color.status_orange_bg
+        }
+
+        // Aplicamos los colores al TextView del estado
+        holder.txtStatus.setTextColor(ContextCompat.getColor(contexto, colorTxt))
+        holder.txtStatus.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(contexto, colorBg))
+
         holder.btnEdit.setOnClickListener {
             listener.onEditClick(item)
         }
 
-        // 4. Configurar el clic para ELIMINAR
         holder.btnDelete.setOnClickListener {
-            // Verificamos que el ID no sea nulo antes de avisar al listener
             item.warranty_incidents_id?.let { id ->
                 listener.onDeleteClick(id)
             }
         }
-        // 5. Configurar el click para mostrar los datos en la modal
-        holder.itemView.setOnClickListener { item
-            listener.onItemClick(warranties[position])
+
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(item)
         }
-
-        val garantia = warranties[position]
-        val contexto = holder.itemView.context
-
-        holder.txtStatus.text = "Estado: ${garantia.warranty_status}"
-
-        // 1. Obtenemos ambos colores en una sola sentencia 'when'
-        val (colorTxt, colorBg) = when (garantia.warranty_status) {
-            "2"    -> R.color.status_green_text to R.color.status_green_bg
-            "0"    -> R.color.status_red_text to R.color.status_red_bg
-            else         -> R.color.status_orange_text to R.color.status_orange_bg
-        }
-
-        // 2. Aplicamos ambos colores
-        holder.txtStatus.setTextColor(ContextCompat.getColor(contexto, colorTxt))
-        holder.txtStatus.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(contexto, colorBg))
     }
 
     override fun getItemCount(): Int = warranties.size
@@ -79,7 +86,7 @@ class WarrantyAdapter(
         val txtSerial: TextView = itemView.findViewById(R.id.txtSerial)
         val txtStatus: TextView = itemView.findViewById(R.id.txtStatus)
 
-        // Referencias a los botones nuevos del XML
+
         val btnEdit: ImageButton = itemView.findViewById(R.id.btnEdit)
         val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
 

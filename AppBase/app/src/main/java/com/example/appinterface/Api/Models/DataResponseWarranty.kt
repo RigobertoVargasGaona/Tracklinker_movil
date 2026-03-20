@@ -9,5 +9,5 @@ data class DataResponseWarranty(
     val warranty_description: String = "",
     val warranty_link_attachments: String? = null,
     val warranty_city: String = "",
-    val warranty_status: String = "0"
+    val warranty_status: String = ""
 )
