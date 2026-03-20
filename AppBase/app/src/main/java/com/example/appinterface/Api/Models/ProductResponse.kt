@@ -1,14 +1,10 @@
 package com.example.appinterface.RESPONSE
 
-import com.google.gson.annotations.SerializedName
+import com.example.appinterface.Api.Models.Product
 
-data class GenericResponse(
-    @SerializedName("success")
+data class ProductResponse(
+
     val success: Boolean,
-
-    @SerializedName("message")
     val message: String,
-
-    @SerializedName("id")
-    val id: Int? = null
+    val data: List<Product>
 )
