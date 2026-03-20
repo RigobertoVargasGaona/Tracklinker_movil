@@ -33,7 +33,6 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
             val intent = Intent(this, AddWarrantyActivity::class.java)
             startActivity(intent)
         }
-
         val btnVolver = findViewById<ImageButton>(R.id.buttonVolver)
         btnVolver.setOnClickListener{
             val intent =Intent(this, MainActivity::class.java)
@@ -41,22 +40,23 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
         }
         val btnPendig = findViewById<Button>(R.id.pending)
         btnPendig.setOnClickListener {
-            filterWarranty("1")
+            showWarranties("1")
         }
-
         val btnReceive = findViewById<Button>(R.id.receive)
         btnReceive.setOnClickListener {
-            filterWarranty("0")
+            showWarranties("0")
         }
-
         val btnFinished = findViewById<Button>(R.id.finished)
         btnFinished.setOnClickListener {
-            filterWarranty("2")
+            showWarranties("2")
         }
         val btnAll = findViewById<Button>(R.id.all)
         btnAll.setOnClickListener {
-            filterWarranty("3")
+            showWarranties("3")
         }
+
+
+
         showWarranties()
 
     }
@@ -111,6 +111,7 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
             putExtra("PHONE", warranty.warranty_phone)
             putExtra("ADDRESS", warranty.warranty_address)
             putExtra("DESCRIPTION", warranty.warranty_description)
+            putExtra("STATUS", warranty.warranty_status)
         }
         startActivity(intent)
     }
@@ -118,40 +119,31 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
     override fun onDeleteClick(id: Int) {
         deleteWarranty(id)
     }
-    fun filterWarranty(state: String){
-        when (state){
-            "0"->{
-                Toast.makeText(this,"Works Recibidas",Toast. LENGTH_SHORT).show()
-            }
-            "1"->{
-                Toast.makeText(this,"Works Pendientes",Toast. LENGTH_SHORT).show()
-            }
-            "2" ->{
-                Toast.makeText(this,"Works finalizadas",Toast. LENGTH_SHORT).show()
-            }
-            "3" -> {
-                Toast.makeText(this,"Works Todas",Toast. LENGTH_SHORT).show()
-            }
-        }
-
-    }
 
 
 
-    fun showWarranties() {
+
+    fun showWarranties(state: String ="3") {
         val recyclerView = findViewById<RecyclerView>(R.id.RecyWarranties)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         RetrofitInstance.api2kotlin.getWarranties().enqueue(object : Callback<List<DataResponseWarranty>> {
             override fun onResponse(call: Call<List<DataResponseWarranty>>, response: Response<List<DataResponseWarranty>>) {
                 if (response.isSuccessful) {
-                    response.body()?.let { data ->
-                        recyclerView.adapter = WarrantyAdapter(data, this@WarrantiesActivity)
+                        val allWarranties = response.body() ?: listOf()
+                        val filteredList = if (state=="3"){
+                            allWarranties
+                        }else{
+                            allWarranties.filter {it.warranty_status == state}
+                        }
+                        recyclerView.adapter = WarrantyAdapter(filteredList, this@WarrantiesActivity)
                     }
                 }
+            override fun onFailure(call: Call<List<DataResponseWarranty>>, t: Throwable) {
+
+
             }
-            override fun onFailure(call: Call<List<DataResponseWarranty>>, t: Throwable) {}
-        })
+         })
     }
 
     fun deleteWarranty(idParaEliminar: Int) {
@@ -159,7 +151,7 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@WarrantiesActivity, "Garantía eliminada", Toast.LENGTH_SHORT).show()
-                    showWarranties()
+                    showWarranties("3")
                 }
             }
             override fun onFailure(call: Call<Void>, t: Throwable) {}
