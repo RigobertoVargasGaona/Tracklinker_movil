@@ -37,6 +37,13 @@
                 android:exported="false" />
         <activity
                 android:name=".features.users.UsersActivity"
+
+        <activity
+                android:name=".features.categories.CategoriesActivity"
+                android:exported="false" />
+
+        <activity
+                android:name=".features.categories.AddCategoryActivity"
                 android:exported="false" />
 
     </application>

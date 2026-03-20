@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+    <!-- Nombre de la categoría -->
+    <TextView
+            android:id="@+id/txtCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:textSize="30sp"
+            android:text="Nombre de categoría"/>
+
+    <!-- Estado -->
+    <TextView
+            android:id="@+id/txtCategoryStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="6dp"
+            android:background="#F0F0F0"
+            android:textSize="20sp"
+            android:text="Activo"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginVertical="16dp"/>
+
+    <!-- Descripción -->
+    <TextView
+            android:id="@+id/txtCategoryDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:text="Descripción..."
+            android:textSize="20sp"/>
+
+</LinearLayout>
