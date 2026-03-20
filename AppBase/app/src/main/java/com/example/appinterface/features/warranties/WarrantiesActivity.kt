@@ -28,20 +28,36 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
         enableEdgeToEdge()
         setContentView(R.layout.warranty_activity_main)
 
-
-
         val btnAgregar = findViewById<ImageButton>(R.id.buttonAgregarGarantia)
         btnAgregar.setOnClickListener {
             val intent = Intent(this, AddWarrantyActivity::class.java)
             startActivity(intent)
         }
-
         val btnVolver = findViewById<ImageButton>(R.id.buttonVolver)
         btnVolver.setOnClickListener{
             val intent =Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-        mostrarGarantias()
+        val btnPendig = findViewById<Button>(R.id.pending)
+        btnPendig.setOnClickListener {
+            showWarranties("1")
+        }
+        val btnReceive = findViewById<Button>(R.id.receive)
+        btnReceive.setOnClickListener {
+            showWarranties("0")
+        }
+        val btnFinished = findViewById<Button>(R.id.finished)
+        btnFinished.setOnClickListener {
+            showWarranties("2")
+        }
+        val btnAll = findViewById<Button>(R.id.all)
+        btnAll.setOnClickListener {
+            showWarranties("3")
+        }
+
+
+
+        showWarranties()
 
     }
     override fun onItemClick(warranty: DataResponseWarranty) {
@@ -70,7 +86,7 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
 
 
         // Lógica simple para el estado
-        txtStatus.text = if (warranty.warranty_status == "1") "Activo" else "Pendiente"
+        txtStatus.text = if (warranty.warranty_status == "0") "Pendiente" else if (warranty.warranty_status=="1")"En proceso" else "Completada"
 
         dialog.setContentView(view)
 
@@ -95,38 +111,47 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
             putExtra("PHONE", warranty.warranty_phone)
             putExtra("ADDRESS", warranty.warranty_address)
             putExtra("DESCRIPTION", warranty.warranty_description)
+            putExtra("STATUS", warranty.warranty_status)
         }
         startActivity(intent)
     }
 
     override fun onDeleteClick(id: Int) {
-        eliminarGarantia(id)
+        deleteWarranty(id)
     }
 
-    fun mostrarGarantias() {
-        val recyclerView = findViewById<RecyclerView>(R.id.RecyPersonas)
+
+
+
+    fun showWarranties(state: String ="3") {
+        val recyclerView = findViewById<RecyclerView>(R.id.RecyWarranties)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         RetrofitInstance.api2kotlin.getWarranties().enqueue(object : Callback<List<DataResponseWarranty>> {
             override fun onResponse(call: Call<List<DataResponseWarranty>>, response: Response<List<DataResponseWarranty>>) {
                 if (response.isSuccessful) {
-                    response.body()?.let { data ->
-                        recyclerView.adapter = WarrantyAdapter(data, this@WarrantiesActivity)
+                        val allWarranties = response.body() ?: listOf()
+                        val filteredList = if (state=="3"){
+                            allWarranties
+                        }else{
+                            allWarranties.filter {it.warranty_status == state}
+                        }
+                        recyclerView.adapter = WarrantyAdapter(filteredList, this@WarrantiesActivity)
                     }
                 }
+            override fun onFailure(call: Call<List<DataResponseWarranty>>, t: Throwable) {
+
+
             }
-            override fun onFailure(call: Call<List<DataResponseWarranty>>, t: Throwable) {}
-        })
-
-
+         })
     }
 
-    fun eliminarGarantia(idParaEliminar: Int) {
+    fun deleteWarranty(idParaEliminar: Int) {
         RetrofitInstance.api2kotlin.deleteWarranty(idParaEliminar).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@WarrantiesActivity, "Garantía eliminada", Toast.LENGTH_SHORT).show()
-                    mostrarGarantias()
+                    showWarranties("3")
                 }
             }
             override fun onFailure(call: Call<Void>, t: Throwable) {}
