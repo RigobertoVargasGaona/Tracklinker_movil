@@ -1,4 +1,4 @@
-package com.example.appinterface.Api.RetrofitInstance
+package com.example.appinterface.Api
 
 import com.example.appinterface.Api.Services.ApiServicesWarranties
 import retrofit2.Retrofit
