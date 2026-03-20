@@ -12,19 +12,46 @@
 >
 
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecyPersonas"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="2dp"
-            android:padding="3dp"
-            android:background="@color/azul_fondo"
-            tools:listitem="@android:layout/simple_list_item_1"
-            app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutSerial"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="343dp"
+            android:layout_height="56dp"
+
+            android:hint="Serial del Producto"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+           
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonVolver" app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintVertical_bias="0.168"/>
+            app:layout_constraintTop_toBottomOf="@+id/buttonVolver"
+    >
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/serial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:inputType="textCapCharacters"
+
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyWarranties"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="12dp"
+            android:background="@color/azul_fondo"
+            tools:listitem="@android:layout/simple_list_item_1"
+            app:layout_constraintTop_toBottomOf="@+id/receive"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"/>
     <ImageButton
             android:id="@+id/buttonAgregarGarantia"
             android:layout_width="92dp"
@@ -39,8 +66,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.949"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.882"/>
-
+            app:layout_constraintVertical_bias="0.882"
+   />
 
     <ImageButton
             android:id="@+id/buttonVolver"
@@ -55,7 +82,85 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/receive"
+            android:layout_width="89dp"
+            android:layout_height="36dp"
+            android:textColor="#666666"
+            app:backgroundTint="@null"
+            android:background="@drawable/boton_redondeado_gris"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="-1dp"
+            android:paddingBottom="0dp"
+            android:text="Recibidas"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSerial"
+            app:layout_constraintEnd_toStartOf="@+id/pending"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/RecyWarranties"
+            android:layout_marginBottom="5dp"/>
 
+    <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/pending"
+            android:layout_width="92dp"
+            android:layout_height="36dp"
+            android:textColor="#666666"
+            app:backgroundTint="@null"
+            android:background="@drawable/boton_redondeado_gris"
+            android:text="Pendientes"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/receive"
+            app:layout_constraintEnd_toStartOf="@+id/finished"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSerial"
+            app:layout_constraintBottom_toTopOf="@+id/RecyWarranties"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp" android:layout_marginTop="5dp" android:layout_marginBottom="5dp"/>
+    <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/finished"
+            android:layout_width="93dp"
+            android:layout_height="36dp"
+            android:textColor="#666666"
+            app:backgroundTint="@null"
+            android:background="@drawable/boton_redondeado_gris"
+            android:text="Finalizadas"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSerial"
+            android:layout_marginStart="1dp"
+            app:layout_constraintStart_toEndOf="@+id/pending"
+            app:layout_constraintEnd_toStartOf="@+id/all"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/RecyWarranties"/>
+    <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/all"
+            android:layout_width="76dp"
+            android:layout_height="35dp"
+            android:textColor="#666666"
+            app:backgroundTint="@null"
+            android:background="@drawable/boton_redondeado_gris"
+            android:text="Todas"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSerial"
+            app:layout_constraintStart_toEndOf="@+id/finished"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/RecyWarranties"
+            app:layout_constraintVertical_bias="0.0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
