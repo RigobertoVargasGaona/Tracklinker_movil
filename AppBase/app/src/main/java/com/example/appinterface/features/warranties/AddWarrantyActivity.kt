@@ -10,7 +10,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Api.Models.DataResponseWarranty
-import com.example.appinterface.Api.RetrofitInstance
+import com.example.appinterface.Api.RetrofitInstance.RetrofitInstance
 import com.example.appinterface.R
 import retrofit2.Call
 import retrofit2.Callback
