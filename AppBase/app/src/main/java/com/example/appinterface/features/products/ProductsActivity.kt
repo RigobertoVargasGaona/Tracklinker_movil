@@ -15,6 +15,7 @@ import com.example.appinterface.Api.RetrofitInstance.RetrofitInstance
 import com.example.appinterface.Api.Models.Product
 import com.example.appinterface.MainActivity
 import com.example.appinterface.R
+import com.example.appinterface.features.categories.AddProductsActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
@@ -31,7 +32,7 @@ class ProductsActivity : AppCompatActivity(), OnProductClickListener {
 
         val btnAgregar = findViewById<ImageButton>(R.id.buttonAgregarProducto)
         btnAgregar.setOnClickListener {
-            val intent = Intent(this, AddProductActivity::class.java)
+            val intent = Intent(this, AddProductsActivity::class.java)
             startActivity(intent)
         }
 
@@ -73,7 +74,7 @@ class ProductsActivity : AppCompatActivity(), OnProductClickListener {
     }
 
     override fun onEditClick(product: Product) {
-        val intent = Intent(this, AddProductActivity::class.java).apply {
+        val intent = Intent(this, AddProductsActivity::class.java).apply {
             putExtra("EDITING_ID", product.product_id)
             putExtra("SERIAL", product.product_serial)
             putExtra("MODEL", product.product_model)
