@@ -140,4 +140,30 @@
                 android:layout_height="wrap_content"/>
     </com.google.android.flexbox.FlexboxLayout>
 
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            app:justifyContent="center"
+            app:alignItems="center"
+            app:flexDirection="column"
+    >
+        <ImageButton
+                android:id="@+id/nav_outputs"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_warranties"
+                app:tint="#9ca3af"
+                android:background="@android:color/transparent"
+                android:scaleType="center"/>
+        <TextView
+                android:id="@+id/nav_outputs_label"
+                android:text="Salidas"
+                android:fontFamily="@font/dmsansmedium"
+                android:textSize="11sp"
+                android:textColor="#9ca3af"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </com.google.android.flexbox.FlexboxLayout>
+
 </com.google.android.flexbox.FlexboxLayout>
