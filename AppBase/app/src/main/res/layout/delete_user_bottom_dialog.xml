@@ -22,7 +22,7 @@
             android:layout_marginBottom="40dp"
     >
         <TextView
-                android:layout_width="280dp"
+                android:layout_width="300dp"
                 android:fontFamily="@font/dmsansmedium"
                 android:layout_height="wrap_content"
                 android:id="@+id/delete_user_message"
