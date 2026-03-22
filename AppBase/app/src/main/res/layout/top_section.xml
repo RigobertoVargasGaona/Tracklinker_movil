@@ -7,7 +7,7 @@
         android:layout_height="70dp"
         app:alignItems="center"
         app:justifyContent="space_between"
-        android:paddingTop="20dp"
+        android:paddingTop="15dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
 >
