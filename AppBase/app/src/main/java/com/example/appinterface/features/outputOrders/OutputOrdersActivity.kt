@@ -22,7 +22,7 @@ import com.example.appinterface.Api.Models.DataResponseCategory
 import com.example.appinterface.Api.Models.OutputOrder
 import com.example.appinterface.Api.Models.User
 import com.example.appinterface.Api.Models.UsersResponse
-import com.example.appinterface.Api.RetrofitInstance.RetrofitInstance
+import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
 import com.example.appinterface.helpers.BottomNavHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
