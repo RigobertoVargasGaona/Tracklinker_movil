@@ -17,22 +17,13 @@
 
         <!-- Nombre de la categoría -->
         <TextView
-                android:id="@+id/txtCategoryName"
+                android:id="@+id/txtCategory_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#333333"
                 android:text="Categoría Ejemplo"/>
-
-        <!-- Descripción -->
-        <TextView
-                android:id="@+id/txtCategoryDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="#666666"
-                android:text="Descripción de la categoría"/>
 
         <View
                 android:layout_width="match_parent"
