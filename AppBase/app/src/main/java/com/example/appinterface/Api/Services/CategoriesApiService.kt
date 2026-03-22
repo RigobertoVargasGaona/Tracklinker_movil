@@ -1,5 +1,7 @@
 package com.example.appinterface.Api.Services
 
+import com.example.appinterface.Api.Models.Category
+import com.example.appinterface.Api.Models.CreateCategory
 import com.example.appinterface.Api.Models.DataResponseCategory
 import retrofit2.Call
 import retrofit2.http.Body
@@ -12,17 +14,17 @@ import retrofit2.http.Path
 
 interface CategoriesApiService {
     @GET("/categories")
-    fun getCategories(): Call<List<DataResponseCategory>>
+    fun getCategories(): Call<List<Category>>
 
     @POST("/categories")
     fun createCategory(
-        @Body warranty: DataResponseCategory
+        @Body category: CreateCategory
     ): Call<DataResponseCategory>
 
     @PUT("/categories/{id}")
     fun updateCategory(
         @Path ("id") id:Int,
-        @Body warranty: DataResponseCategory
+        @Body category: CreateCategory
     ): Call<DataResponseCategory>
 
     @DELETE("/categories/{id}")

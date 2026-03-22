@@ -5,20 +5,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appinterface.Api.Models.Category
 import com.example.appinterface.Api.Models.DataResponseCategory
 import com.example.appinterface.R
 
 // INTERFAZ
 interface OnCategoryClickListener {
-    fun onEditClick(category: DataResponseCategory)
+    fun onEditClick(category: Category)
     fun onDeleteClick(id: Int)
-    fun onItemClick(category: DataResponseCategory)
+    fun onItemClick(category: Category)
 }
 
 // ADAPTER
 class CategoryAdapter(
-    private val categories: List<DataResponseCategory>,
+    private val categories: List<Category>,
     private val listener: OnCategoryClickListener
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
@@ -29,34 +31,36 @@ class CategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        val item = categories[position]
-
-        // Mostrar solo el nombre de la categoría
-        holder.txtName.text = "Categoría: ${item.category_name}"
-
-        // BOTÓN EDITAR
-        holder.btnEdit.setOnClickListener {
-            listener.onEditClick(item)
-        }
-
-        // BOTÓN ELIMINAR
-        holder.btnDelete.setOnClickListener {
-            item.category_id?.let { id ->
-                listener.onDeleteClick(id)
-            }
-        }
-
-        // CLICK EN ITEM
-        holder.itemView.setOnClickListener {
-            listener.onItemClick(item)
-        }
+        holder.bind(categories[position], listener)
     }
 
-    override fun getItemCount(): Int = categories.size
+    override fun getItemCount(): Int {
+        return categories.size
+    }
 
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val txtName: TextView = itemView.findViewById(R.id.txtCategoryName)
-        val btnEdit: ImageButton = itemView.findViewById(R.id.btnEdit)
-        val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
+        private val txtName: TextView = itemView.findViewById(R.id.txtCategory_name)
+        private val btnEdit: ImageButton = itemView.findViewById(R.id.btnEdit)
+        private val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
+
+        fun bind(category: Category, listener: OnCategoryClickListener) {
+            // Display category name
+            txtName.text = category.category_name
+
+            // Edit button
+            btnEdit.setOnClickListener {
+                listener.onEditClick(category)
+            }
+
+            // Delete button
+            btnDelete.setOnClickListener {
+                listener.onDeleteClick(category.category_id)
+            }
+
+            // Item click
+            itemView.setOnClickListener {
+                listener.onItemClick(category)
+            }
+        }
     }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="280dp"
+        android:layout_height="130dp"
+        app:cardCornerRadius="16dp"
+        android:clickable="false"
+        android:layout_marginEnd="10dp"
+        android:stateListAnimator="@animator/button_click"
+>
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <com.google.android.flexbox.FlexboxLayout
+                android:padding="14dp"
+                app:flexDirection="column"
+                android:layout_width="200dp"
+                android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/KpiName"
+                    android:fontFamily="@font/dmsansmedium"
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <TextView
+                    android:id="@+id/KpiMetricValue"
+                    android:layout_marginTop="10dp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/dmsansextrabold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/KpiPercentValue"
+                    android:layout_marginTop="15dp"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <com.google.android.flexbox.FlexboxLayout
+                android:padding="14dp"
+                app:alignItems="center"
+                app:justifyContent="center"
+                app:flexDirection="column"
+                android:layout_width="130dp"
+                android:layout_height="match_parent">
+            <ImageView
+                    android:src="@drawable/chart_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+        </com.google.android.flexbox.FlexboxLayout>
+    </com.google.android.flexbox.FlexboxLayout>
+</androidx.cardview.widget.CardView>

@@ -14,6 +14,7 @@ import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.Api.Models.DataResponseWarranty
 import com.example.appinterface.MainActivity
 import com.example.appinterface.R
+import com.example.appinterface.helpers.BottomNavHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
@@ -27,15 +28,11 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         enableEdgeToEdge()
         setContentView(R.layout.warranty_activity_main)
+        BottomNavHelper.setup(this, R.id.nav_warranties)
 
         val btnAgregar = findViewById<ImageButton>(R.id.buttonAgregarGarantia)
         btnAgregar.setOnClickListener {
             val intent = Intent(this, AddWarrantyActivity::class.java)
-            startActivity(intent)
-        }
-        val btnVolver = findViewById<ImageButton>(R.id.buttonVolver)
-        btnVolver.setOnClickListener{
-            val intent =Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         val btnPendig = findViewById<Button>(R.id.pending)
