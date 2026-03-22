@@ -8,8 +8,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.appinterface.Api.CategoryRetrofitInstance
+import com.example.appinterface.Api.Models.Category
+import com.example.appinterface.Api.Models.CreateCategory
 import com.example.appinterface.Api.Models.DataResponseCategory
+import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,22 +50,20 @@ class AddCategoryActivity : AppCompatActivity() {
 
     private fun crearCategoria(v: View) {
         val name = findViewById<EditText>(R.id.categoryName).text.toString()
-        val description = findViewById<EditText>(R.id.categoryDescription).text.toString()
 
         if (name.isEmpty()) {
             Toast.makeText(this, "El nombre es obligatorio", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val category = DataResponseCategory(
-            category_name = name,
-            category_description = description
+        val category = CreateCategory(
+            category_name = name
         )
 
         val call: Call<DataResponseCategory> = if (editingId == null) {
-            CategoryRetrofitInstance.api2kotlin.createCategory(category)
+            RetrofitInstance.categoryApi.createCategory(category)
         } else {
-            CategoryRetrofitInstance.api2kotlin.updateCategory(editingId!!, category)
+            RetrofitInstance.categoryApi.updateCategory(editingId!!, category)
         }
 
         call.enqueue(object : Callback<DataResponseCategory> {
