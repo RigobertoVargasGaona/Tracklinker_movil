@@ -3,6 +3,8 @@ package com.example.appinterface.features.warranties
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,7 @@ import com.example.appinterface.Api.Models.DataResponseWarranty
 import com.example.appinterface.R
 import com.example.appinterface.helpers.BottomNavHelper
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -71,23 +74,38 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
         // Estado inicial
         updateFilterStyle(btnAll)
         showWarranties("3")
+
+        val inputBusqueda = findViewById<TextInputEditText>(R.id.serial)
+
+        inputBusqueda.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val texto = s.toString()
+
+                showWarranties("3", texto)
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
     }
 
     private fun updateFilterStyle(selected: Button) {
         filterButtons.forEach { btn ->
             if (btn == selected) {
-                // Estilo ACTIVO (Azul/Oscuro con texto blanco)
+                // Estilo ACTIVO
                 btn.setBackgroundResource(R.drawable.bg_nav_active)
                 btn.setTextColor(Color.WHITE)
             } else {
-                // Estilo INACTIVO (Gris con texto oscuro)
+                // Estilo INACTIVO
                 btn.setBackgroundResource(R.drawable.boton_redondeado_gris)
                 btn.setTextColor(Color.parseColor("#666666"))
             }
         }
     }
 
-    fun showWarranties(state: String = "3") {
+    // Agregamos el parámetro query que por defecto es vacío
+    fun showWarranties(state: String = "3", query: String = "") {
         val recyclerView = findViewById<RecyclerView>(R.id.RecyWarranties)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -95,7 +113,18 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
             override fun onResponse(call: Call<List<DataResponseWarranty>>, response: Response<List<DataResponseWarranty>>) {
                 if (response.isSuccessful) {
                     val allWarranties = response.body() ?: listOf()
-                    val filteredList = if (state == "3") allWarranties else allWarranties.filter { it.warranty_status == state }
+
+
+                    var filteredList = if (state == "3") allWarranties else allWarranties.filter { it.warranty_status == state }
+
+
+                    if (query.isNotEmpty()) {
+                        filteredList = filteredList.filter {
+                            it.product_serial.contains(query, ignoreCase = true) ||
+                                    it.warranty_customer.contains(query, ignoreCase = true)
+                        }
+                    }
+
                     recyclerView.adapter = WarrantyAdapter(filteredList, this@WarrantiesActivity)
                 }
             }
@@ -131,7 +160,7 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
 
     override fun onEditClick(warranty: DataResponseWarranty) {
         val intent = Intent(this, AddWarrantyActivity::class.java).apply {
-            putExtra("EDITING_ID", warranty.warranty_incidents_id)
+            putExtra("EDITING", warranty.warranty_incidents_id)
             putExtra("SERIAL", warranty.product_serial)
             putExtra("CUSTOMER", warranty.warranty_customer)
             putExtra("CITY", warranty.warranty_city)
