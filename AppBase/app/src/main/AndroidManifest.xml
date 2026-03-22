@@ -36,7 +36,7 @@
                 android:name=".features.warranties.AddWarrantyActivity"
                 android:exported="false" />
         <activity
-                android:name=".features.users.UsersActivity"
+                android:name=".features.users.UsersActivity" />
 
         <activity
                 android:name=".features.categories.CategoriesActivity"
@@ -44,6 +44,11 @@
 
         <activity
                 android:name=".features.categories.AddCategoryActivity"
+                android:exported="false" />
+
+
+        <activity
+                android:name=".features.products.ProductsActivity"
                 android:exported="false" />
 
     </application>
