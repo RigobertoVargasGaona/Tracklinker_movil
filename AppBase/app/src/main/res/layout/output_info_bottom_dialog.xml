@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Informacion del usuario"
+            android:layout_marginBottom="20dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/dmsansextrabold"/>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha de creacion :"
+                android:fontFamily="@font/dmsansextrabold"
+        />
+        <TextView
+                android:id="@+id/info_modal_output_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/dmsansmedium"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    >
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Serial :"
+                android:fontFamily="@font/dmsansextrabold"
+        />
+        <TextView
+                android:id="@+id/info_modal_output_serial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/dmsansmedium"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Modelo :"
+                android:fontFamily="@font/dmsansextrabold"
+        />
+        <TextView
+                android:id="@+id/info_modal_output_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/dmsansmedium"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Garantia :"
+                android:fontFamily="@font/dmsansextrabold"
+        />
+        <TextView
+                android:id="@+id/info_modal_output_garanty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/dmsansmedium"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transformación :"
+                android:fontFamily="@font/dmsansextrabold"
+        />
+        <TextView
+                android:id="@+id/info_modal_output_transformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/dmsansmedium"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripcion :"
+                android:fontFamily="@font/dmsansextrabold"
+        />
+        <TextView
+                android:id="@+id/info_modal_output_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/dmsansmedium"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marca :"
+                android:fontFamily="@font/dmsansextrabold"
+        />
+        <TextView
+                android:id="@+id/info_modal_output_brand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/dmsansmedium"
+        />
+    </LinearLayout>
+</LinearLayout>
