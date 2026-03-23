@@ -27,7 +27,7 @@ interface WarrantiesApiService {
 
     @DELETE("/warranties/{id}")
     fun deleteWarranty(
-    @Path ("id") id:Int
+    @Path ("id") id: Int?
     ): Call<Void>
 }
 

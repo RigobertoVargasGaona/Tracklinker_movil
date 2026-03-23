@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        app:flexDirection="column"
+        android:padding="24dp">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar Garantía"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/dmsansextrabold"/>
+
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexDirection="column"
+            app:justifyContent="center"
+            app:alignItems="center"
+            android:layout_marginBottom="40dp">
+
+        <TextView
+                android:id="@+id/delete_user_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dmsansmedium"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:text="¿Deseas eliminar el registro de garantía de"
+        />
+
+        <TextView
+                android:id="@+id/delete_warranty_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dmsansextrabold"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_marginTop="4dp"
+        />
+
+    </com.google.android.flexbox.FlexboxLayout>
+    <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:justifyContent="center"
+            app:alignItems="center"
+    >
+        <Button
+                android:id="@+id/delete_warranty_button"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:backgroundTint="#FF0000"
+                android:textColor="@color/white"
+                android:fontFamily="@font/dmsansextrabold"
+                android:text="Eliminar"
+        />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</com.google.android.flexbox.FlexboxLayout>

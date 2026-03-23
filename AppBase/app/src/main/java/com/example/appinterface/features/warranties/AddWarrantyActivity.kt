@@ -16,6 +16,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+// Importaciones necesarias para Google Code Scanner
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
+import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
+import com.google.mlkit.vision.barcode.common.Barcode
+
 class AddWarrantyActivity : AppCompatActivity() {
 
     private var editingId: Int? = null
@@ -25,18 +30,21 @@ class AddWarrantyActivity : AppCompatActivity() {
         setContentView(R.layout.warranty_save_edit)
 
         val dropdown = findViewById<AutoCompleteTextView>(R.id.warrantyStatus)
+        val inputSerial = findViewById<EditText>(R.id.serial)
+        val btnScan = findViewById<ImageButton>(R.id.btnScan) // Tu botón horizontal
 
+        // Configuramos el click para que llame al método de escaneo
+        btnScan.setOnClickListener {
+            scanBarcode(inputSerial)
+        }
 
         if (intent.hasExtra("EDITING_ID")) {
-
             editingId = intent.getIntExtra("EDITING_ID", -1)
 
-            // Cargamos todas las opciones para poder cambiar el estado
             val items = listOf("Recibida", "Pendiente", "Finalizada")
             val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, items)
             dropdown.setAdapter(adapter)
 
-            // Llenar campos con datos recibidos
             findViewById<EditText>(R.id.serial).setText(intent.getStringExtra("SERIAL"))
             findViewById<EditText>(R.id.customer).setText(intent.getStringExtra("CUSTOMER"))
             findViewById<EditText>(R.id.city).setText(intent.getStringExtra("CITY"))
@@ -49,11 +57,9 @@ class AddWarrantyActivity : AppCompatActivity() {
             dropdown.setText(statusText, false)
 
         } else {
-
             val items = listOf("Recibida")
             val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, items)
             dropdown.setAdapter(adapter)
-
             dropdown.setText("Recibida", false)
         }
 
@@ -63,6 +69,26 @@ class AddWarrantyActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+
+    private fun scanBarcode(targetEditText: EditText) {
+        val options = GmsBarcodeScannerOptions.Builder()
+            .setBarcodeFormats(Barcode.FORMAT_ALL_FORMATS) // Lee QR, Code 128, EAN, etc.
+            .enableAutoZoom()
+            .build()
+
+        val scanner = GmsBarcodeScanning.getClient(this, options)
+
+        scanner.startScan()
+            .addOnSuccessListener { barcode ->
+                val rawValue: String? = barcode.rawValue
+                targetEditText.setText(rawValue)
+                Toast.makeText(this, "Código detectado con éxito", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al escanear: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun statusToId(statusName: String): String {
@@ -91,7 +117,6 @@ class AddWarrantyActivity : AppCompatActivity() {
         val cityStr = findViewById<EditText>(R.id.city).text.toString()
         val descStr = findViewById<EditText>(R.id.description).text.toString()
 
-        // 3. Capturamos el texto del dropdown y lo convertimos a ID numérico para la DB
         val selectedStatusText = findViewById<AutoCompleteTextView>(R.id.warrantyStatus).text.toString()
         val statusIdForDb = statusToId(selectedStatusText)
 
@@ -109,7 +134,7 @@ class AddWarrantyActivity : AppCompatActivity() {
             warranty_description = descStr,
             warranty_link_attachments = "../warranties/images/WINC0003",
             warranty_city = cityStr,
-            warranty_status = statusIdForDb // <--- Aquí enviamos "0", "1" o "2"
+            warranty_status = statusIdForDb
         )
 
         val call = if (editingId == null || editingId == -1) {

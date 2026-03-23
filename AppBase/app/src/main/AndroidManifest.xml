@@ -15,7 +15,9 @@
             android:theme="@style/Theme.AppInterface"
             android:usesCleartextTraffic="true"
             tools:targetApi="31">
-
+        <meta-data
+                android:name="com.google.mlkit.vision.DEPENDENCIES"
+                android:value="barcode_ui" />
         <activity
                 android:name=".features.logoin.LoginActivity"
                 android:exported="true">
@@ -43,6 +45,7 @@
                 android:exported="false" />
 
         <activity
+
                 android:name=".features.categories.AddCategoryActivity"
                 android:exported="false" />
 
