@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -160,7 +161,7 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
 
     override fun onEditClick(warranty: DataResponseWarranty) {
         val intent = Intent(this, AddWarrantyActivity::class.java).apply {
-            putExtra("EDITING", warranty.warranty_incidents_id)
+            putExtra("EDITING_ID", warranty.warranty_incidents_id)
             putExtra("SERIAL", warranty.product_serial)
             putExtra("CUSTOMER", warranty.warranty_customer)
             putExtra("CITY", warranty.warranty_city)
@@ -172,15 +173,37 @@ class WarrantiesActivity : AppCompatActivity(), OnWarrantyClickListener {
         startActivity(intent)
     }
 
-    override fun onDeleteClick(id: Int) {
-        RetrofitInstance.api2kotlin.deleteWarranty(id).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@WarrantiesActivity, "Garantía eliminada", Toast.LENGTH_SHORT).show()
-                    showWarranties("3")
+    override fun onDeleteClick(warranty: DataResponseWarranty) {
+        val modalView = layoutInflater.inflate(R.layout.delete_warranty_botton_dialog, null)
+        val bottomSheet = BottomSheetDialog(this@WarrantiesActivity)
+        bottomSheet.setContentView(modalView)
+
+        val txtMessage = modalView.findViewById<TextView>(R.id.delete_warranty_message)
+        val deleteButton = modalView.findViewById<View>(R.id.delete_warranty_button)
+
+
+        txtMessage?.text = "${warranty.warranty_customer}?"
+
+        deleteButton?.setOnClickListener {
+            deleteButton.isEnabled = false
+
+            val idParaEliminar = warranty.warranty_incidents_id
+
+            RetrofitInstance.api2kotlin.deleteWarranty(idParaEliminar).enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    bottomSheet.dismiss()
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@WarrantiesActivity, "Garantía eliminada", Toast.LENGTH_SHORT).show()
+                        showWarranties("3")
+                    }
                 }
-            }
-            override fun onFailure(call: Call<Void>, t: Throwable) {}
-        })
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    bottomSheet.dismiss()
+                    Toast.makeText(this@WarrantiesActivity, "Error de conexión", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
+        bottomSheet.show()
     }
 }
