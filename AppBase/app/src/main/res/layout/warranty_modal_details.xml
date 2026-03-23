@@ -46,7 +46,6 @@
             android:id="@+id/txtCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="8dp"
             android:textSize="20dp"
 
@@ -73,5 +72,13 @@
             android:padding="1dp"
             android:text="Descripción..."
             android:textSize="20dp"
+    />
+     <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="20dp"
+
     />
 </LinearLayout>

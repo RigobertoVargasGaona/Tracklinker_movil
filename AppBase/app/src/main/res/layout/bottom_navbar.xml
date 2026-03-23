@@ -7,15 +7,18 @@
         android:layout_height="70dp"
         android:layout_margin="5dp"
         android:background="@drawable/bg_bottom_nav"
-        app:alignItems="center">
+        app:alignItems="center"
+        app:justifyContent="space_around">
 
     <com.google.android.flexbox.FlexboxLayout
             android:layout_width="80dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:justifyContent="center"
             app:alignItems="center"
-            app:flexDirection="column"
-    >
+            app:flexDirection="column">
         <ImageButton
                 android:id="@+id/nav_home"
                 android:layout_width="20dp"
@@ -31,22 +34,22 @@
                 android:fontFamily="@font/dmsansmedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#9ca3af"
-        />
+                android:textColor="#9ca3af"/>
     </com.google.android.flexbox.FlexboxLayout>
 
     <com.google.android.flexbox.FlexboxLayout
             android:layout_width="80dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:justifyContent="center"
             app:alignItems="center"
-            app:flexDirection="column"
-    >
+            app:flexDirection="column">
         <ImageButton
                 android:id="@+id/nav_users"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_weight="1"
                 android:src="@drawable/ic_users"
                 app:tint="#9ca3af"
                 android:background="@android:color/transparent"
@@ -54,51 +57,53 @@
         <TextView
                 android:id="@+id/nav_users_label"
                 android:text="Usuarios"
-                android:fontFamily="@font/dmsansmedium"
                 android:textSize="11sp"
-                android:textColor="#9ca3af"
+                android:fontFamily="@font/dmsansmedium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="#9ca3af"/>
     </com.google.android.flexbox.FlexboxLayout>
 
     <com.google.android.flexbox.FlexboxLayout
             android:layout_width="80dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:justifyContent="center"
             app:alignItems="center"
-            app:flexDirection="column"
-    >
+            app:flexDirection="column">
         <ImageButton
                 android:id="@+id/nav_categories"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_weight="1"
                 android:src="@drawable/ic_categories"
                 app:tint="#9ca3af"
                 android:background="@android:color/transparent"
                 android:scaleType="center"/>
         <TextView
                 android:id="@+id/nav_categories_label"
-                android:text="Categorias"
-                android:fontFamily="@font/dmsansmedium"
+                android:text="Categorías"
                 android:textSize="11sp"
-                android:textColor="#9ca3af"
+                android:fontFamily="@font/dmsansmedium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="#9ca3af"/>
     </com.google.android.flexbox.FlexboxLayout>
 
     <com.google.android.flexbox.FlexboxLayout
             android:layout_width="80dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:justifyContent="center"
             app:alignItems="center"
-            app:flexDirection="column"
-    >
+            app:flexDirection="column">
         <ImageButton
                 android:id="@+id/nav_products"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_weight="1"
                 android:src="@drawable/ic_products"
                 app:tint="#9ca3af"
                 android:background="@android:color/transparent"
@@ -106,52 +111,53 @@
         <TextView
                 android:id="@+id/nav_products_label"
                 android:text="Productos"
-                android:fontFamily="@font/dmsansmedium"
                 android:textSize="11sp"
-                android:textColor="#9ca3af"
+                android:fontFamily="@font/dmsansmedium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="#9ca3af"/>
     </com.google.android.flexbox.FlexboxLayout>
-
 
     <com.google.android.flexbox.FlexboxLayout
             android:layout_width="80dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:justifyContent="center"
             app:alignItems="center"
-            app:flexDirection="column"
-    >
+            app:flexDirection="column">
         <ImageButton
                 android:id="@+id/nav_warranties"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_weight="1"
                 android:src="@drawable/ic_warranties"
                 app:tint="#9ca3af"
                 android:background="@android:color/transparent"
                 android:scaleType="center"/>
         <TextView
                 android:id="@+id/nav_warranties_label"
-                android:text="Garantias"
-                android:fontFamily="@font/dmsansmedium"
+                android:text="Garantías"
                 android:textSize="11sp"
-                android:textColor="#9ca3af"
+                android:fontFamily="@font/dmsansmedium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="#9ca3af"/>
     </com.google.android.flexbox.FlexboxLayout>
 
     <com.google.android.flexbox.FlexboxLayout
             android:layout_width="80dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:justifyContent="center"
             app:alignItems="center"
-            app:flexDirection="column"
-    >
+            app:flexDirection="column">
         <ImageButton
                 android:id="@+id/nav_outputs"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_weight="1"
                 android:src="@drawable/ic_warranties"
                 app:tint="#9ca3af"
                 android:background="@android:color/transparent"
@@ -159,11 +165,11 @@
         <TextView
                 android:id="@+id/nav_outputs_label"
                 android:text="Salidas"
-                android:fontFamily="@font/dmsansmedium"
                 android:textSize="11sp"
-                android:textColor="#9ca3af"
+                android:fontFamily="@font/dmsansmedium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="#9ca3af"/>
     </com.google.android.flexbox.FlexboxLayout>
 
 </com.google.android.flexbox.FlexboxLayout>
