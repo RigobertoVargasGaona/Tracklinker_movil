@@ -121,6 +121,7 @@ class OutputOrdersActivity : AppCompatActivity(), OutputOrdersListener {
             .setText("¿Deseas Habilitar la orden N°${outputOrder.out_order_id}?")
 
         val deleteButton = modalView.findViewById<Button>(R.id.delete_output_button)
+        deleteButton.setText("Habilitar")
 
         deleteButton.setOnClickListener {
             RetrofitInstance.outputOrderApi.enableOutput(outputOrder.out_order_id).enqueue(object : Callback<DataResponseOutputs> {
@@ -153,6 +154,7 @@ class OutputOrdersActivity : AppCompatActivity(), OutputOrdersListener {
 
         val deleteButton = modalView.findViewById<Button>(R.id.delete_output_button)
         deleteButton.setBackgroundColor(Color.RED)
+        deleteButton.setText("Deshabilitar")
 
         deleteButton.setOnClickListener {
             RetrofitInstance.outputOrderApi.disableOutput(outputOrder.out_order_id).enqueue(object : Callback<DataResponseOutputs> {
