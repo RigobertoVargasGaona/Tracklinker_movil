@@ -12,10 +12,10 @@ import androidx.core.content.res.ResourcesCompat
 import com.example.appinterface.MainActivity
 import com.example.appinterface.R
 import com.example.appinterface.features.categories.CategoriesActivity
+import com.example.appinterface.features.outputOrders.OutputOrdersActivity
 import com.example.appinterface.features.products.ProductsActivity
 import com.example.appinterface.features.users.UsersActivity
 import com.example.appinterface.features.warranties.WarrantiesActivity
-//import com.example.appinterface.features.outputs.OutputsActivity /
 
 object BottomNavHelper {
 
@@ -25,7 +25,7 @@ object BottomNavHelper {
         R.id.nav_categories  to CategoriesActivity::class.java,
         R.id.nav_products    to ProductsActivity::class.java,
         R.id.nav_warranties  to WarrantiesActivity::class.java,
-       // R.id.nav_outputs     to OutputsActivity::class.java
+        R.id.nav_outputs     to OutputOrdersActivity::class.java
     )
 
     private val labelMap = mapOf(
