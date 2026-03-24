@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Adapter.adapterProducts.ProductAdapter
 import com.example.appinterface.Adapter.adapterProducts.OnProductClickListener
-import com.example.appinterface.Api.RetrofitInstance.RetrofitInstance
+import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.Api.Models.Product
 import com.example.appinterface.MainActivity
 import com.example.appinterface.R
 import com.example.appinterface.features.categories.AddProductsActivity
+import com.example.appinterface.helpers.BottomNavHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
@@ -29,16 +30,11 @@ class ProductsActivity : AppCompatActivity(), OnProductClickListener {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         enableEdgeToEdge()
         setContentView(R.layout.activity_product)
+        BottomNavHelper.setup(this, R.id.nav_products)
 
         val btnAgregar = findViewById<ImageButton>(R.id.buttonAgregarProducto)
         btnAgregar.setOnClickListener {
             val intent = Intent(this, AddProductsActivity::class.java)
-            startActivity(intent)
-        }
-
-        val btnVolver = findViewById<ImageButton>(R.id.buttonVolver)
-        btnVolver.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -52,7 +48,6 @@ class ProductsActivity : AppCompatActivity(), OnProductClickListener {
         val txtSerial = view.findViewById<TextView>(R.id.txtProductSerial)
         val txtCategory = view.findViewById<TextView>(R.id.txtCategory)
         val txtModel = view.findViewById<TextView>(R.id.txtProductModel)
-        val txtStock = view.findViewById<TextView>(R.id.txtProductStock)
         val txtBill = view.findViewById<TextView>(R.id.txtProductBill)
 
 

@@ -14,7 +14,7 @@ import com.example.appinterface.R
 // Definimos la interfaz aquí mismo o en un archivo aparte
 interface OnWarrantyClickListener {
     fun onEditClick(warranty: DataResponseWarranty)
-    fun onDeleteClick(id: Int)
+    fun onDeleteClick(warranty: DataResponseWarranty)
     fun onItemClick(warranty: DataResponseWarranty)
 }
 
@@ -70,7 +70,7 @@ class WarrantyAdapter(
 
         holder.btnDelete.setOnClickListener {
             item.warranty_incidents_id?.let { id ->
-                listener.onDeleteClick(id)
+                listener.onDeleteClick(item)
             }
         }
 
