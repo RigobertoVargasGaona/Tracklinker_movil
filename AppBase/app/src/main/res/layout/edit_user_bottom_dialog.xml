@@ -1,43 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-              android:padding="24dp">
+              android:padding="17dp">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Actualizar Usuario"
             android:textSize="18sp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/dmsansextrabold"
     />
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rol"
+            android:textSize="12sp"
+            android:fontFamily="@font/dmsansmedium"
+    />
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_rol_select"
             android:layout_width="match_parent"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="3dp"
     >
         <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:background="@drawable/bg_input"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/rolSelect"
+                android:id="@+id/edit_rol_select"
                 android:inputType="none"
                 android:focusable="false"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/dmsansmedium"
+            android:text="Nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <EditText
+            android:textSize="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:fontFamily="@font/dmsansregular"
             android:id="@+id/edit_user_name"
             android:hint="Nombre"
@@ -49,7 +64,14 @@
             android:layout_marginBottom="8dp"
     />
 
+    <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/dmsansmedium"
+            android:text="Primer Apellido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <EditText
+            android:textSize="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_user_first_surname"
@@ -60,10 +82,17 @@
             android:paddingEnd="16dp"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
     />
 
+    <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/dmsansmedium"
+            android:text="Segundo Apellido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <EditText
+            android:textSize="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_user_second_surname"
@@ -74,10 +103,17 @@
             android:paddingEnd="16dp"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
     />
 
+    <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/dmsansmedium"
+            android:text="Correo electrónico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <EditText
+            android:textSize="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_user_email"
@@ -88,10 +124,17 @@
             android:paddingEnd="16dp"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
     />
 
+    <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/dmsansmedium"
+            android:text="Teléfono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <EditText
+            android:textSize="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_user_phone"
@@ -102,10 +145,17 @@
             android:paddingEnd="16dp"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
             android:inputType="number"/>
 
+    <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/dmsansmedium"
+            android:text="Ciudad de residencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <EditText
+            android:textSize="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/dmsansregular"
@@ -116,21 +166,28 @@
             android:paddingEnd="16dp"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
     />
 
+    <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/dmsansmedium"
+            android:text="Dirección"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_user_address"
             android:fontFamily="@font/dmsansregular"
             android:hint="Dirección"
+            android:textSize="15dp"
             android:background="@drawable/bg_input"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="15dp"
     />
 
     <com.google.android.flexbox.FlexboxLayout
@@ -138,6 +195,7 @@
             android:layout_height="wrap_content"
             app:justifyContent="center"
             app:alignItems="center"
+            android:layout_marginBottom="20dp"
     >
         <Button
                 android:id="@+id/edit_user_button"
