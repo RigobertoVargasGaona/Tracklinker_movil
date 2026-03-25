@@ -17,12 +17,13 @@
 
     <com.google.android.flexbox.FlexboxLayout
             app:flexDirection="column"
-            android:layout_width="0dp"
-            android:layout_height="750dp"
+            android:layout_width="411dp"
+            android:layout_height="728dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0">
         <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="10dp"
                 android:paddingTop="5dp"
                 android:id="@+id/KpisRecycler"
                 android:layout_width="match_parent"
