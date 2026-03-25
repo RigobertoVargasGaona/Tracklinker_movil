@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Adapter.adapterWarranties.WarrantyAdapter
 import com.example.appinterface.Adapter.adapterWarranties.OnWarrantyClickListener
-import com.example.appinterface.Api.RetrofitInstance.RetrofitInstance
+import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.Api.Models.DataResponseWarranty
 import com.example.appinterface.R
 import com.example.appinterface.helpers.BottomNavHelper
