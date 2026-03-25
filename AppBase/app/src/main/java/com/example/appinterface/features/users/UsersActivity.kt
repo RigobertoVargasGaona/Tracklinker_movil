@@ -52,14 +52,17 @@ class UsersActivity : AppCompatActivity() {
 
                 bottomSheet.show()
 
-                val autoComplete = modalView.findViewById<AutoCompleteTextView>(R.id.rolSelect)
-                val options = listOf("Admin", "Almacen", "Tecnico")
-                val adapter = ArrayAdapter(this@UsersActivity, android.R.layout.simple_dropdown_item_1line, options)
+                val autoComplete = modalView.findViewById<AutoCompleteTextView>(R.id.edit_rol_select)
+                val rolOptions = listOf("Admin", "Almacen", "Tecnico", "Cliente")
+                val adapter = ArrayAdapter(this@UsersActivity, android.R.layout.simple_list_item_1, rolOptions)
                 autoComplete.setAdapter(adapter)
-                autoComplete.setText(user.rol_name, false)
-                autoComplete.setOnClickListener { autoComplete.showDropDown() }
+                autoComplete.setText(rolOptions[user.rol_id - 1], false)
+                var selectedRol = user.rol_id
 
-                modalView.findViewById<AutoCompleteTextView>(R.id.rolSelect).setText(user.rol_name)
+                autoComplete.setOnItemClickListener { _, _, position, _ ->
+                    selectedRol = position + 1
+                }
+
                 modalView.findViewById<EditText>(R.id.edit_user_name).setText(user.user_name)
                 modalView.findViewById<EditText>(R.id.edit_user_first_surname).setText(user.user_first_surname)
                 modalView.findViewById<EditText>(R.id.edit_user_second_surname).setText(user.user_second_surname)
@@ -69,14 +72,8 @@ class UsersActivity : AppCompatActivity() {
                 modalView.findViewById<EditText>(R.id.edit_user_address).setText(user.user_address)
 
                 val editButton = modalView.findViewById<Button>(R.id.edit_user_button)
+
                 editButton.setOnClickListener {
-                    val rolText = autoComplete.text.toString()
-                    val rol_id = when(rolText) {
-                        "Admin" -> 1
-                        "Almacen" -> 2
-                        "Tecnico" -> 3
-                        else -> 0
-                    }
                     val name = modalView.findViewById<EditText>(R.id.edit_user_name).text.toString()
                     val firstSurname = modalView.findViewById<EditText>(R.id.edit_user_first_surname).text.toString()
                     val secondSurname = modalView.findViewById<EditText>(R.id.edit_user_second_surname).text.toString()
@@ -87,7 +84,7 @@ class UsersActivity : AppCompatActivity() {
 
                     RetrofitInstance.usersApi.updateUser(
                         CreateUser(
-                            rol_id,
+                            selectedRol,
                             name,
                             firstSurname,
                             secondSurname,
@@ -100,7 +97,7 @@ class UsersActivity : AppCompatActivity() {
                         user.user_id,
                     ).enqueue(object : Callback<UsersResponse> {
                         override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
-                            if (response.isSuccessful) {
+                            if (response.body()?.success == true) {
                                 Toast.makeText(this@UsersActivity, "Usuario actualizado", Toast.LENGTH_SHORT).show()
                                 bottomSheet.dismiss()
                                 loadUsers()
