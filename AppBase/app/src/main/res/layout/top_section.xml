@@ -16,11 +16,11 @@
             android:layout_height="wrap_content"
             app:alignItems="center"
     >
-        <ImageButton
-                android:src="@drawable/avatar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="15dp"
+        <include
+                layout="@layout/avatar_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
         />
         <TextView
                 android:id="@+id/top_user_gretting"
