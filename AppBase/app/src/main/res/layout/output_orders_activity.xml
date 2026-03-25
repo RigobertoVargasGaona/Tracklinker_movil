@@ -5,8 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/outputs_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".features.users.UsersActivity">
+        android:layout_height="match_parent">
     <include
             layout="@layout/top_section"
             android:layout_width="match_parent"
@@ -17,19 +16,19 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/outputs_recycler_view"
-            android:layout_width="395dp"
-            android:layout_height="825dp"
+            android:layout_width="412dp"
+            android:layout_height="831dp"
+            android:padding="5dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             android:layout_marginStart="5dp" android:layout_marginEnd="5dp"
-    />
+            app:layout_constraintVertical_bias="0.979"/>
     <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_add"
             android:background="@drawable/bg_button_add"
-            android:onClick="createUser"
+            android:onClick="createOutput"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.954" app:layout_constraintVertical_bias="0.88"

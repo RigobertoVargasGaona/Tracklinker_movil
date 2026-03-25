@@ -1,12 +1,15 @@
 package com.example.appinterface.Api.Services
 
 import com.example.appinterface.Api.Models.CreateOutputOrder
+import com.example.appinterface.Api.Models.DataResponseOutputs
 import com.example.appinterface.Api.Models.OutputOrder
 import com.example.appinterface.Api.Models.Product
+import com.example.appinterface.Api.Models.UpdateOutputOrder
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -14,21 +17,26 @@ import retrofit2.http.Path
 interface OutputOrderService {
 
     @GET("output_details/")
-    fun getOutputs(): Call<List<OutputOrder>>
+    fun getOutputs(): Call<DataResponseOutputs>
 
-    @POST("outputs/create")
+    @POST("output_details/create")
     fun createOutput(
         @Body outputOrder: CreateOutputOrder
-    ): Call<Product>
+    ): Call<DataResponseOutputs>
 
-    @PUT("outputs/update/{id}")
+    @PUT("output_details/update/{id}")
     fun updateOutput(
         @Path("id") id: Int,
-        @Body outputOrder: CreateOutputOrder
-    ): Call<Product>
+        @Body outputOrder: UpdateOutputOrder
+    ): Call<DataResponseOutputs>
 
-    @DELETE("outputs/delete/{id}")
-    fun deleteOutput(
+    @PUT("output_details/disable/{id}")
+    fun disableOutput(
         @Path("id") id: Int
-    ): Call<Void>
+    ): Call<DataResponseOutputs>
+
+    @PUT("output_details/enable/{id}")
+    fun enableOutput(
+        @Path("id") id: Int
+    ): Call<DataResponseOutputs>
 }

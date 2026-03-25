@@ -5,5 +5,6 @@ import com.example.appinterface.Api.Models.OutputOrder
 interface OutputOrdersListener {
     fun onShowInfo(outputOrder: OutputOrder)
     fun onEditOutputOrder(outputOrder: OutputOrder)
-    fun onDelete(outputOrder: OutputOrder)
+    fun onDisable(outputOrder: OutputOrder)
+    fun onEnable(outputOrder: OutputOrder)
 }
