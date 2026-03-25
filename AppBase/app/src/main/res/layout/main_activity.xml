@@ -10,7 +10,7 @@
     <include
             layout="@layout/top_section"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="120dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/include2"/>
