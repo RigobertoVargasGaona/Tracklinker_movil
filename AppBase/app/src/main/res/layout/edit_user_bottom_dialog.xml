@@ -29,7 +29,7 @@
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/rolSelect"
+                android:id="@+id/edit_rol_select"
                 android:inputType="none"
                 android:focusable="false"
         />
