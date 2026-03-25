@@ -3,7 +3,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="350dp"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="16dp"
     android:layout_width="match_parent"
     android:clickable="false"
@@ -11,19 +11,39 @@
 >
     <com.google.android.flexbox.FlexboxLayout
             app:flexDirection="column"
+            android:padding="4dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-        <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/dmsansextrabold"
-                android:id="@+id/chartTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
+            android:layout_height="wrap_content" >
+        <com.google.android.flexbox.FlexboxLayout
+            app:justifyContent="space_between"
+            app:alignItems="center"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/dmsansextrabold"
+                    android:id="@+id/chartTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+            <androidx.cardview.widget.CardView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="45dp"
+                    android:layout_height="30dp">
+                <TextView
+                        android:padding="5dp"
+                        android:fontFamily="@font/dmsansextrabold"
+                        android:id="@+id/chartTitleYear"
+                        android:text="2024"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+            </androidx.cardview.widget.CardView>
+        </com.google.android.flexbox.FlexboxLayout>
 
         <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
-                android:layout_height="310dp"/>
+                android:layout_height="400dp"/>
     </com.google.android.flexbox.FlexboxLayout>
 </com.google.android.material.card.MaterialCardView>

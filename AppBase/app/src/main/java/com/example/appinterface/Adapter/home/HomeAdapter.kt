@@ -13,10 +13,16 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 
-class HomeAdapter(private val items: List<HomeItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeAdapter(private val items: MutableList<HomeItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         const val TYPE_KPI = 0
         const val TYPE_CHART = 1
+    }
+
+    fun updateData(newItems: List<HomeItem>) {
+        items.clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()
     }
 
     override fun getItemViewType(position: Int): Int = when (items[position]) {
