@@ -18,8 +18,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyCategories"
-            android:layout_width="406dp"
-            android:layout_height="819dp"
+            android:layout_width="417dp"
+            android:layout_height="798dp"
             android:layout_marginTop="2dp"
             android:padding="3dp"
             android:background="@color/azul_fondo"
@@ -27,8 +27,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"/>
     <ImageButton
             android:id="@+id/buttonAgregarCategoria"
             android:layout_width="92dp"
