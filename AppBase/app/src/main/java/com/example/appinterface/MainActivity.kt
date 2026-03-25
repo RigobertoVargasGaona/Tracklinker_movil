@@ -43,7 +43,7 @@ class MainActivity: AppCompatActivity() {
 
                     val charts = listOf(
                         HomeItem.Chart(
-                            title = "Productos Agregados por mes del año 2024",
+                            title = "Productos Agregados por mes",
                             entries = entries
                         )
                     )
