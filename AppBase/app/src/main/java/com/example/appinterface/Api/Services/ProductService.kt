@@ -1,7 +1,7 @@
 package com.example.appinterface.Api.Services
 
-
 import com.example.appinterface.Api.Models.Product
+import com.example.appinterface.RESPONSE.ApiResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -16,18 +16,14 @@ interface ProductService {
     fun getProducts(): Call<List<Product>>
 
     @POST("products")
-    fun createProduct(
-        @Body product: Product
-    ): Call<Product>
+    fun createProduct(@Body product: Product): Call<ApiResponse>
 
     @PUT("products/{id}")
     fun updateProduct(
         @Path("id") id: Int,
         @Body product: Product
-    ): Call<Product>
+    ): Call<ApiResponse>
 
     @DELETE("products/{id}")
-    fun deleteProduct(
-        @Path("id") id: Int
-    ): Call<Void>
+    fun deleteProduct(@Path("id") id: Int): Call<ApiResponse>
 }
