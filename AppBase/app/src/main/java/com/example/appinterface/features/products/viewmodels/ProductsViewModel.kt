@@ -1,4 +1,6 @@
 package com.example.appinterface.features.products.viewmodels
 
-class ProductsViewModel {
+import androidx.lifecycle.ViewModel
+
+class ProductsViewModel : ViewModel() {
 }

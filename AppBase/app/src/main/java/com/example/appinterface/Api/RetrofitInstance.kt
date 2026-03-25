@@ -20,8 +20,8 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(WarrantiesApiService::class.java)
-
     }
+
     val apiProducts: ProductService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL_APIKOTLIN)
