@@ -8,50 +8,15 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crear Usuario"
+            android:text="Crear orden de entrada"
             android:textSize="18sp"
             android:layout_marginBottom="20dp"
             android:textStyle="bold"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_height="wrap_content"
-            android:hint="Selecciona un rol"
-            android:layout_marginBottom="8dp"
-    >
-        <AutoCompleteTextView
-                android:layout_width="match_parent"
-                android:background="@drawable/bg_input"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/add_model_Select"
-                android:inputType="none"
-                android:focusable="false"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/add_user_name"
-            android:hint="Nombre"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp"
-            android:layout_marginBottom="8dp"
-    />
-
-    <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/add_out_serial"
+            android:id="@+id/add_output_serial"
             android:hint="Serial"
             android:background="@drawable/bg_input"
             android:paddingStart="16dp"
@@ -64,8 +29,22 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/add_user_first_surname"
-            android:hint="Primer Apellido"
+            android:id="@+id/add_output_garanty"
+            android:hint="Tiempo de garantía"
+            android:background="@drawable/bg_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_marginBottom="8dp"
+    />
+
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_output_transformation"
+            android:hint="Transformación"
             android:background="@drawable/bg_input"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"

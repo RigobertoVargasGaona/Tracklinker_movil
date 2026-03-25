@@ -8,9 +8,9 @@
         android:padding="24dp">
 
     <TextView
+            android:id="@+id/delete_modal_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eliminar Usuario"
             android:textSize="18sp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/dmsansextrabold"/>
@@ -22,19 +22,11 @@
             android:layout_marginBottom="40dp"
     >
         <TextView
-                android:layout_width="390dp"
+                android:id="@+id/delete_output_message"
+                android:layout_width="wrap_content"
                 android:fontFamily="@font/dmsansmedium"
                 android:layout_height="wrap_content"
-                android:id="@+id/delete_user_message"
                 android:textSize="16dp"
-                android:text="¿Deseas eliminar la orden"
-        />
-        <TextView
-                android:layout_width="match_parent"
-                android:fontFamily="@font/dmsansextrabold"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:id="@+id/delete_user_message_name"
         />
     </com.google.android.flexbox.FlexboxLayout>
 
@@ -45,10 +37,10 @@
             app:alignItems="center"
     >
         <Button
-                android:id="@+id/delete_user_button"
+                android:backgroundTint="@color/black"
+                android:id="@+id/delete_output_button"
                 android:layout_width="150dp"
                 android:layout_height="55dp"
-                android:backgroundTint="#FF0000"
                 android:textColor="@color/white"
                 android:fontFamily="@font/dmsansextrabold"
                 android:text="Eliminar"
