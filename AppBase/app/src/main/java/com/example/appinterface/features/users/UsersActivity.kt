@@ -117,7 +117,7 @@ class UsersActivity : AppCompatActivity() {
 
                 bottomSheet.show()
 
-                modalView.findViewById<TextView>(R.id.delete_user_message_name).setText(" ${user.user_name} ${user.user_first_surname} ?")
+                modalView.findViewById<TextView>(R.id.delete_user_message_name).setText("${user.user_name} ${user.user_first_surname} ?")
 
                 val deleteButton = modalView.findViewById<Button>(R.id.delete_user_button)
 
