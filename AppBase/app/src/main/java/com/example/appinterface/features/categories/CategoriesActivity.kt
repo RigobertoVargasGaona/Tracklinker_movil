@@ -22,6 +22,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.google.android.material.textfield.TextInputEditText
+import androidx.core.widget.addTextChangedListener
 
 class CategoriesActivity : AppCompatActivity(), OnCategoryClickListener {
 
@@ -42,6 +44,12 @@ class CategoriesActivity : AppCompatActivity(), OnCategoryClickListener {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        val search = findViewById<TextInputEditText>(R.id.searchCategory)
+
+        search.addTextChangedListener {
+            adapter.filter(it.toString())
+        }
+
         val btnAgregar = findViewById<ImageButton>(R.id.buttonAgregarCategoria)
         btnAgregar.setOnClickListener {
             val intent = Intent(this, AddCategoryActivity::class.java)
@@ -60,8 +68,6 @@ class CategoriesActivity : AppCompatActivity(), OnCategoryClickListener {
 
         txtName.text = "Nombre: ${category.category_name}"
 
-        // Eliminado txtStatus porque category_status ya no existe
-        // txtStatus.text = ...
 
         dialog.setContentView(view)
 
@@ -106,9 +112,7 @@ class CategoriesActivity : AppCompatActivity(), OnCategoryClickListener {
 
 
                         val data = response.body() ?: emptyList()
-                        categoryList.clear()
-                        categoryList.addAll(data)
-                        adapter.notifyDataSetChanged()
+                        adapter.updateData(data)
 
                         /*Toast.makeText(this@CategoriesActivity, "RESPONDE", Toast.LENGTH_SHORT).show() */
                     }
