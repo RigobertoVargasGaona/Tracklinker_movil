@@ -4,10 +4,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main"
-        android:padding="8dp"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".features.products.AddProductActivity"
+        tools:context=".features.products.AddProductsActivity"
         android:fitsSystemWindows="true">
 
     <ImageButton
@@ -20,8 +20,6 @@
             android:scaleType="fitCenter"
             android:src="@drawable/icon"
             app:tint="@color/black"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,8 +27,8 @@
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Gestión de Producto"
+            android:layout_marginTop="16dp"
+            android:text="Agregar Producto"
             android:textColor="#1A1C1E"
             android:textSize="28sp"
             android:fontFamily="sans-serif-medium"
@@ -42,7 +40,7 @@
             android:id="@+id/subTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ingresa los detalles del inventario"
+            android:text="Ingresa los detalles del producto a crear"
             android:textColor="#5E6368"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +51,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:hint="Orden Entrada"
             app:layout_constraintTop_toBottomOf="@id/subTitle"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,9 +60,9 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bill"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutProductName"
@@ -72,7 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint=""
+            android:hint="Subcategoría"
             app:layout_constraintTop_toBottomOf="@id/layoutBill"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -80,27 +78,26 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
+                android:layout_height="wrap_content"
+                android:enabled="false"/> </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutModel"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="Modelo"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/layoutProductName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
                 android:id="@+id/model"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutSerial"
@@ -119,12 +116,11 @@
                 android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGuardarProducto"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:text="Guardar Producto"
             app:layout_constraintTop_toBottomOf="@id/layoutSerial"
             app:layout_constraintStart_toStartOf="parent"

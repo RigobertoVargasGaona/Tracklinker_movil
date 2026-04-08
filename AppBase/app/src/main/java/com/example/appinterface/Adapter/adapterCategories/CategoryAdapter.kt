@@ -5,10 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Api.Models.Category
-import com.example.appinterface.Api.Models.DataResponseCategory
 import com.example.appinterface.R
 
 // INTERFAZ
@@ -20,9 +18,12 @@ interface OnCategoryClickListener {
 
 // ADAPTER
 class CategoryAdapter(
-    private val categories: List<Category>,
+    private var categories: MutableList<Category>,
     private val listener: OnCategoryClickListener
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+
+    // 🔥 LISTA ORIGINAL PARA FILTRO
+    private var originalList: MutableList<Category> = ArrayList(categories)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -34,8 +35,32 @@ class CategoryAdapter(
         holder.bind(categories[position], listener)
     }
 
-    override fun getItemCount(): Int {
-        return categories.size
+    override fun getItemCount(): Int = categories.size
+
+    // 🔍 FILTRO
+    fun filter(query: String) {
+        val filtered = if (query.isEmpty()) {
+            originalList
+        } else {
+            originalList.filter {
+                it.category_name.lowercase().contains(query.lowercase())
+            }
+        }
+
+        categories.clear()
+        categories.addAll(filtered)
+        notifyDataSetChanged()
+    }
+
+    // 🔄 ACTUALIZAR DATA DESDE API
+    fun updateData(newData: List<Category>) {
+        originalList.clear()
+        originalList.addAll(newData)
+
+        categories.clear()
+        categories.addAll(newData)
+
+        notifyDataSetChanged()
     }
 
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,20 +69,16 @@ class CategoryAdapter(
         private val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
 
         fun bind(category: Category, listener: OnCategoryClickListener) {
-            // Display category name
             txtName.text = category.category_name
 
-            // Edit button
             btnEdit.setOnClickListener {
                 listener.onEditClick(category)
             }
 
-            // Delete button
             btnDelete.setOnClickListener {
                 listener.onDeleteClick(category.category_id)
             }
 
-            // Item click
             itemView.setOnClickListener {
                 listener.onItemClick(category)
             }

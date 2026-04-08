@@ -1,10 +1,6 @@
 package com.example.appinterface.RESPONSE
 
-import com.example.appinterface.Api.Models.Product
-
-data class ProductResponse(
-
+data class ApiResponse(
     val success: Boolean,
-    val message: String,
-    val data: List<Product>
+    val message: String
 )

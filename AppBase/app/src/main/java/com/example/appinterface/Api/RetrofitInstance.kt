@@ -2,6 +2,7 @@ package com.example.appinterface.Api
 
 import com.example.appinterface.Api.Models.OutputOrder
 import com.example.appinterface.Api.Services.CategoriesApiService
+import com.example.appinterface.Api.Services.HomeService
 import com.example.appinterface.Api.Services.OutputOrderService
 import com.example.appinterface.Api.Services.UsersApiService
 import com.example.appinterface.Api.Services.WarrantiesApiService
@@ -20,8 +21,8 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(WarrantiesApiService::class.java)
-
     }
+
     val apiProducts: ProductService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL_APIKOTLIN)
@@ -52,6 +53,14 @@ object RetrofitInstance {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(OutputOrderService::class.java)
+    }
+
+    val reportsApi: HomeService by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL_PYTHON_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(HomeService::class.java)
     }
 }
 

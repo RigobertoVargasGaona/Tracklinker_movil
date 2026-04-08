@@ -48,6 +48,12 @@
 
                 android:name=".features.categories.AddCategoryActivity"
                 android:exported="false" />
+        <activity
+                android:name=".features.products.ProductsActivity"
+                android:exported="false" />
+        <activity
+                android:name=".features.products.AddProductsActivity"
+                android:exported="false" />
 
 
         <activity
