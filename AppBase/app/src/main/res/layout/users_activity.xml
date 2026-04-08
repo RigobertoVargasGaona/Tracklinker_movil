@@ -17,12 +17,12 @@
     <androidx.recyclerview.widget.RecyclerView
             android:padding="5dp"
             android:id="@+id/users_recycler_view"
-            android:layout_width="412dp"
-            android:layout_height="793dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="80dp" app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintHorizontal_bias="0.529" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp" app:layout_constraintVertical_bias="0.603"/>
     <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"

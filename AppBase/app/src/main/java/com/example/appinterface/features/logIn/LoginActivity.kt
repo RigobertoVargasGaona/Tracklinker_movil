@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager
+//import androidx.biometric.BiometricManager
 import com.example.appinterface.MainActivity
 import com.example.appinterface.R
 
