@@ -19,7 +19,7 @@
                 android:name="com.google.mlkit.vision.DEPENDENCIES"
                 android:value="barcode_ui" />
         <activity
-                android:name=".features.logoin.LoginActivity"
+                android:name=".features.logIn.LoginActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
