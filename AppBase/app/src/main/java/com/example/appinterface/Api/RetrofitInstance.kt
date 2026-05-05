@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitInstance {
 
-    private const val BASE_URL_APIKOTLIN = "http://192.168.2.68:8080"
-    private const val BASE_URL_PYTHON_API = "http://192.168.2.68:8000/api/"
+    private const val BASE_URL_APIKOTLIN = "http://192.168.2.77:8080"
+    private const val BASE_URL_PYTHON_API = "http://192.168.2.77:8000/api/"
 
     private var tokenManager: TokenManager? = null
 

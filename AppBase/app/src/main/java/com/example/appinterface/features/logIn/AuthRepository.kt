@@ -1,30 +1,29 @@
 package com.example.appinterface.features.logIn
 
+import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.Api.Models.LoginRequest
-import com.example.appinterface.Api.Models.TokenResponse
-import com.example.appinterface.Api.Services.AuthApiService
 import com.example.appinterface.helpers.TokenManager
 
-class AuthRepository(
-    private val api: AuthApiService,
-    private val tokenManager: TokenManager
-) {
-    suspend fun login(email: String, password: String): Result<TokenResponse> {
+class AuthRepository(private val tokenManager: TokenManager) {
+
+    suspend fun login(email: String, password: String): Result<String> {
         return try {
-            val response = api.login(LoginRequest(email, password))
+            val response = RetrofitInstance.authApi.login(
+                LoginRequest(email, password)
+            )
             if (response.isSuccessful) {
-                val body = response.body()!!
-                tokenManager.saveTokens(body.accessToken, body.refreshToken)
-                Result.success(body)
+                val token = response.body()?.token
+                if (token != null) {
+                    tokenManager.saveToken(token)
+                    Result.success(token)
+                } else {
+                    Result.failure(Exception("Token vacío"))
+                }
             } else {
-                Result.failure(Exception("Error ${response.code()}: ${response.message()}"))
+                Result.failure(Exception("Credenciales inválidas"))
             }
         } catch (e: Exception) {
-            Result.failure(e)
+            Result.failure(Exception("Error de conexión: ${e.message}"))
         }
     }
-
-    fun logout() = tokenManager.clearTokens()
-
-    fun isLoggedIn() = tokenManager.isLoggedIn()
 }
