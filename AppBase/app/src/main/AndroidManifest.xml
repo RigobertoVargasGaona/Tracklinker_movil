@@ -55,11 +55,6 @@
                 android:name=".features.products.AddProductsActivity"
                 android:exported="false" />
 
-
-        <activity
-                android:name=".features.products.ProductsActivity"
-                android:exported="false" />
-
         <activity
                 android:name=".features.outputOrders.OutputOrdersActivity"
                 android:exported="false" />
